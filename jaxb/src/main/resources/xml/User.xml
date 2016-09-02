@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<user>
+  <name>str1234</name>
+  <age>1234</age>
+  <gender>male</gender>
+  <documentID>1234</documentID>
+  <available_account_credit>123.45</available_account_credit>
+</user>

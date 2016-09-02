@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+
+<xs:schema  xmlns:xs="http://www.w3.org/2001/XMLSchema"
+			xmlns:usr="http://www.marlo.com.au/trainning/xmltrainning/user"
+			xmlns:ord="http://www.marlo.com.au/trainning/xmltrainning/order"
+		    targetNamespace="http://www.marlo.com.au//trainning/xmltrainning"
+		    elementFormDefault="qualified"		    
+>
+<xs:import schemaLocation="User.xsd" 	                            namespace="http://www.marlo.com.au/trainning/xmltrainning/user" />
+<xs:import schemaLocation="Order.xsd"                       namespace="http://www.marlo.com.au/trainning/xmltrainning/order" />
+
+<xs:element name="request">
+  <xs:complexType>
+    <xs:sequence>
+      <xs:element name="user" type="usr:user" minOccurs="1"/>	      
+      <xs:element name="order" type="ord:order" minOccurs="1" maxOccurs="unbounded"/>      
+    </xs:sequence>
+  </xs:complexType>
+</xs:element>
+
+</xs:schema>
