@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xs:schema  xmlns:xs="http://www.w3.org/2001/XMLSchema"
+			xmlns:ord="http://www.marlo.com.au/trainning/xmltrainning/order"
+			xmlns:rps="http://www.marlo.com.au//trainning/xmltrainning/response"
+		    targetNamespace="http://www.marlo.com.au//trainning/xmltrainning/response"
+		    elementFormDefault="qualified"		    
+>
+
+<xs:import schemaLocation="Order.xsd"                       
+		   namespace="http://www.marlo.com.au/trainning/xmltrainning/order" />
+
+<xs:element name="response" type="rps:response"/>
+
+<xs:complexType name="response">
+  <xs:sequence>	      	     
+    <xs:element name="order" type="ord:order" minOccurs="0" maxOccurs="unbounded"/>      
+  </xs:sequence>
+</xs:complexType>
+
+	
+</xs:schema>

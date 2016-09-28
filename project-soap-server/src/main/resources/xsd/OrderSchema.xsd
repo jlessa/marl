@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+			targetNamespace="http://www.marlo.com.au/trainning/schema/Order" 
+			xmlns:tns="http://www.marlo.com.au/trainning/schema/Order" 
+			xmlns:rqt="http://www.marlo.com.au/trainning/xmltrainning/request"
+			xmlns:rps="http://www.marlo.com.au//trainning/xmltrainning/response"
+			elementFormDefault="qualified">
+		
+		<xsd:import schemaLocation="Request.xsd" 	                            
+				   namespace="http://www.marlo.com.au/trainning/xmltrainning/request" />
+					   
+		<xsd:import schemaLocation="Response.xsd" 	                            
+				   namespace="http://www.marlo.com.au//trainning/xmltrainning/response" />			   
+		
+		<xsd:element name="orderInquiry" type="rqt:request"></xsd:element>								
+		
+		<xsd:element name="orderInquiryResponse" type="rps:response"></xsd:element>
+		
+</xsd:schema>

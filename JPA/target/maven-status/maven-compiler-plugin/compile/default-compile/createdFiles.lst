@@ -1,0 +1,7 @@
+au/com/marlo/training/dao/ModelDao.class
+au/com/marlo/training/dao/ModelDaoContract.class
+au/com/marlo/training/entity/Model.class
+au/com/marlo/training/entity/Client.class
+au/com/marlo/training/entity/Order.class
+au/com/marlo/training/main/Main.class
+au/com/marlo/training/entity/Product.class

@@ -1,0 +1,8 @@
+/home/jefferson/workspace/JPA/src/main/java/au/com/marlo/training/helper/Initializer.java
+/home/jefferson/workspace/JPA/src/main/java/au/com/marlo/training/entity/Order.java
+/home/jefferson/workspace/JPA/src/main/java/au/com/marlo/training/dao/ModelDaoContract.java
+/home/jefferson/workspace/JPA/src/main/java/au/com/marlo/training/main/Main.java
+/home/jefferson/workspace/JPA/src/main/java/au/com/marlo/training/entity/Client.java
+/home/jefferson/workspace/JPA/src/main/java/au/com/marlo/training/dao/ModelDao.java
+/home/jefferson/workspace/JPA/src/main/java/au/com/marlo/training/entity/Model.java
+/home/jefferson/workspace/JPA/src/main/java/au/com/marlo/training/entity/Product.java

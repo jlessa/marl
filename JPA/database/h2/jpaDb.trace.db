@@ -1,0 +1,40 @@
+09-23 10:14:10 database: close
+org.h2.message.DbException: IO Exception: "java.io.EOFException"; "/home/jefferson/workspace/JPA/database/h2/jpaDb.h2.db" [90031-182]
+	at org.h2.message.DbException.get(DbException.java:168)
+	at org.h2.message.DbException.convertIOException(DbException.java:330)
+	at org.h2.store.FileStore.readFully(FileStore.java:275)
+	at org.h2.store.PageStore.readPage(PageStore.java:1325)
+	at org.h2.store.PageStore.getPage(PageStore.java:749)
+	at org.h2.store.PageStreamTrunk$Iterator.next(PageStreamTrunk.java:251)
+	at org.h2.store.PageLog.free(PageLog.java:213)
+	at org.h2.store.PageStore.compact(PageStore.java:498)
+	at org.h2.engine.Database.closeOpenFilesAndUnlock(Database.java:1320)
+	at org.h2.engine.Database.close(Database.java:1270)
+	at org.h2.engine.DatabaseCloser.run(DatabaseCloser.java:63)
+Caused by: org.h2.jdbc.JdbcSQLException: IO Exception: "java.io.EOFException"; "/home/jefferson/workspace/JPA/database/h2/jpaDb.h2.db" [90031-182]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
+	... 11 more
+Caused by: java.io.EOFException
+	at org.h2.store.fs.FileUtils.readFully(FileUtils.java:358)
+	at org.h2.store.FileStore.readFully(FileStore.java:273)
+	... 8 more
+09-23 16:25:52 database: close
+org.h2.message.DbException: IO Exception: "java.io.EOFException"; "/home/jefferson/workspace/JPA/database/h2/jpaDb.h2.db" [90031-182]
+	at org.h2.message.DbException.get(DbException.java:168)
+	at org.h2.message.DbException.convertIOException(DbException.java:330)
+	at org.h2.store.FileStore.readFully(FileStore.java:275)
+	at org.h2.store.PageStore.readPage(PageStore.java:1325)
+	at org.h2.store.PageStore.getPage(PageStore.java:749)
+	at org.h2.store.PageStreamTrunk$Iterator.next(PageStreamTrunk.java:251)
+	at org.h2.store.PageLog.free(PageLog.java:213)
+	at org.h2.store.PageStore.compact(PageStore.java:498)
+	at org.h2.engine.Database.closeOpenFilesAndUnlock(Database.java:1320)
+	at org.h2.engine.Database.close(Database.java:1270)
+	at org.h2.engine.DatabaseCloser.run(DatabaseCloser.java:63)
+Caused by: org.h2.jdbc.JdbcSQLException: IO Exception: "java.io.EOFException"; "/home/jefferson/workspace/JPA/database/h2/jpaDb.h2.db" [90031-182]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
+	... 11 more
+Caused by: java.io.EOFException
+	at org.h2.store.fs.FileUtils.readFully(FileUtils.java:358)
+	at org.h2.store.FileStore.readFully(FileStore.java:273)
+	... 8 more
