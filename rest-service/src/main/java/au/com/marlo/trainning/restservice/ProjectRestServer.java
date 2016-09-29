@@ -26,6 +26,10 @@ public class ProjectRestServer {
 	public void setModelDao(ModelDao modelDao) {
 		this.modelDao = modelDao;
 	}
+	
+	public ProjectRestServer() {
+		modelDao = new ModelDao("JPA");
+	}
 	private ObjectMapper createMapper(){
 		ObjectMapper mapper = new ObjectMapper();
         mapper.configure(SerializationConfig.Feature.WRAP_ROOT_VALUE, true);
@@ -37,8 +41,7 @@ public class ProjectRestServer {
     @Produces("application/json")    
     public Response getOrders(@PathParam("id") String id) { 
     	String json = "";
-    	try{   
-    		modelDao = new ModelDao("JPA");
+    	try{       		
             Client client = (Client) modelDao.getById(Client.class, new Integer(id));
             List<Order> orders = modelDao.getOrdersByUser(client);            
             json = createMapper().writeValueAsString(orders);
@@ -53,8 +56,7 @@ public class ProjectRestServer {
     @Produces("application/json")    
     public Response getProducts() { 
     	String json = "";
-    	try{    
-    		modelDao = new ModelDao("JPA");
+    	try{        		
             List<Product> products = modelDao.getAllProducts();
             json = createMapper().writeValueAsString(products);
     	}catch(Exception ex){

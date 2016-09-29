@@ -8,8 +8,8 @@ import javax.ws.rs.client.WebTarget;
 
 public class ProjectRestClient {
 	final static Logger logger = Logger.getAnonymousLogger();
-	final static String API_URL = "http://localhost:8080/rest-service/methods/";
-	
+	final static String API_URL = "http://localhost:8080/project-rest-server/methods/";
+		
   public static void main(String []arg){	 	  	  
 	  ProjectRestClient client = new ProjectRestClient();
 	  logger.info( client.getClientFromAPI("1"));
@@ -17,7 +17,7 @@ public class ProjectRestClient {
   }
   
   public String getClientFromAPI(String id){	  
-	  	 return getResponse("client/" + id); 	  
+	  	 return getResponse("client/"+id); 	  
   }
   
   public String getAllProducts(){	  	  

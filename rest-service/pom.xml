@@ -2,13 +2,13 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>au.com.marlo.trainning</groupId>
-    <artifactId>rest-service</artifactId>
+    <artifactId>project-rest-server</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>war</packaging>
     <name>Simple CXF JAX-RS webapp service using spring configuration</name>
     <description>Simple CXF JAX-RS webapp service using spring configuration</description>
     <properties>
-        <jackson.version>1.9.13</jackson.version>
+        <jackson.version>1.9.7</jackson.version>
     </properties>
     <dependencies>
         <dependency>
@@ -62,7 +62,7 @@
         
     </dependencies>
     <build>
-    	<finalName>rest-service</finalName>
+    	<finalName>project-rest-server</finalName>
         <pluginManagement>
             <plugins>                
                 <plugin>
