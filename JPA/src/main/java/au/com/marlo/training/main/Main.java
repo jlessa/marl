@@ -12,6 +12,7 @@ public class Main {
 	final static String PERSISTENCE_UNIT = "JPA";
 	
 	public static void main (String [] args){						
+		
 		ModelDao modelDao = new ModelDao(PERSISTENCE_UNIT);
 		
 		Client client = (Client) modelDao.getById(Client.class, 1);

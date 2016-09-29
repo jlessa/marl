@@ -1,15 +1,10 @@
 package au.com.marlo.training.dao;
 
-import java.nio.file.attribute.AclEntry.Builder;
 import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
 import javax.persistence.TypedQuery;
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaDelete;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Root;
 
 import au.com.marlo.training.entity.Client;
 import au.com.marlo.training.entity.Model;
@@ -61,6 +56,4 @@ public class ModelDao implements ModelDaoContract{
 		entityManager.close();
 	}
 	
-	
-		
 }
