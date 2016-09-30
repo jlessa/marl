@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: au.com.marlo.trainning:jms-consumer-example:1.0">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/au/com/marlo/trainning/jms-consumer-example/1.0/jms-consumer-example-1.0.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/au/com/marlo/trainning/jms-consumer-example/1.0/jms-consumer-example-1.0-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/au/com/marlo/trainning/jms-consumer-example/1.0/jms-consumer-example-1.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
