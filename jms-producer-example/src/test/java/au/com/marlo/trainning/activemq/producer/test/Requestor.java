@@ -1,5 +1,8 @@
 package au.com.marlo.trainning.activemq.producer.test;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import javax.jms.*;
 import javax.naming.NamingException;
 import java.text.SimpleDateFormat;
@@ -12,13 +15,17 @@ public class Requestor implements Runnable {
     private Connection connection;
     private Destination replyQueue;
     private MessageProducer requestProducer;
-    private String receivedMessage,requestQueueName, replyQueueName;
+    private String receivedMessage,requestQueueName, replyQueueName, sendMessage;
     private MessageConsumer replyConsumer;
+
+    private static final Logger LOGGER = LoggerFactory
+            .getLogger(Requestor.class);
 
     public String getReceivedMessage() {
         return receivedMessage;
     }
 
+    public void setSendMessage(String message){ sendMessage = message; }
 
     public static Requestor newRequestor(Connection connection, String requestQueueName,
                                          String replyQueueName)
@@ -53,7 +60,7 @@ public class Requestor implements Runnable {
         String timeStamp = new SimpleDateFormat("HH:mm:ss.SSS MM/dd/yyyy").format(new Date());
         requestMessage.setText( message + " " + timeStamp);
         requestMessage.setJMSReplyTo(replyQueue);
-        System.out.print("\n" + requestMessage.getText()+ "\n");
+        LOGGER.info("\n" + requestMessage.getText()+ "\n");
         requestProducer.send(requestMessage);
     }
 
@@ -62,8 +69,7 @@ public class Requestor implements Runnable {
         String replyMessageString = "";
         if (msg instanceof TextMessage) {
             TextMessage replyMessage = (TextMessage) msg;
-            System.out.print("\nReceived Reply: ");
-            System.out.print(replyMessage.getText()+ "\n");
+            LOGGER.info("\nReceived Reply: " + replyMessage.getText()+ "\n");
             replyMessageString = replyMessage.getText();
 
         }
@@ -72,10 +78,7 @@ public class Requestor implements Runnable {
 
     public void run() {
         try {
-
-            send("This is a Request Message");
-            //this.receivedMessage = receiveSync();
-
+            send(sendMessage);
         }catch (Exception ex){
             System.err.println(ex.getMessage());
         }

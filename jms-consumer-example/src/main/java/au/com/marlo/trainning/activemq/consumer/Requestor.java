@@ -36,6 +36,8 @@ public class Requestor implements Runnable {
         return requestor;
     }
 
+
+    //Initialize Requestor Object
     protected void initialize(Connection connection, String requestQueueName,
                               String replyQueueName)
             throws NamingException, JMSException {
@@ -55,6 +57,7 @@ public class Requestor implements Runnable {
         receivedMessage = "";
     }
 
+    //Send an specific message to a Queue
     public void send(String message) throws JMSException {
         TextMessage requestMessage = session.createTextMessage();
         String timeStamp = new SimpleDateFormat("HH:mm:ss.SSS MM/dd/yyyy").format(new Date());
@@ -64,6 +67,7 @@ public class Requestor implements Runnable {
         requestProducer.send(requestMessage);
     }
 
+    //Receive an specific from a Queue
     public String receiveSync() throws JMSException {
         Message msg = replyConsumer.receive();
         String replyMessageString = "";
@@ -79,7 +83,6 @@ public class Requestor implements Runnable {
     public void run() {
         try {
             send(sendMessage);
-            //this.receivedMessage = receiveSync();
         }catch (Exception ex){
             System.err.println(ex.getMessage());
         }

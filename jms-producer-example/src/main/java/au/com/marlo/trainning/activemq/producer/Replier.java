@@ -65,6 +65,7 @@ public class Replier implements MessageListener, Runnable {
 
     }
 
+    //Implemented method to reply a request
     public void onMessage(Message message) {
 
         try {

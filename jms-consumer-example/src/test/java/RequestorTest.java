@@ -15,6 +15,10 @@ import javax.jms.ConnectionFactory;
 import javax.jms.JMSException;
 import javax.naming.NamingException;
 
+
+    /*
+    ** Class to test if the Requestor send and receive an specific message
+    */
 public class RequestorTest {
 
     public  static void thread(Runnable runnable, boolean daemon){
@@ -23,6 +27,10 @@ public class RequestorTest {
         brokerThread.start();
     }
 
+
+    /*
+     ** Test if the Requestor send and receive an specific message
+     */
     @Test
     public void  TestSend() throws JMSException, NamingException, InterruptedException {
         ConnectionFactory connectionFactory = new ActiveMQConnectionFactory("vm://localhost?broker.persistent=false");
@@ -30,6 +38,8 @@ public class RequestorTest {
         connection.start();
         Requestor requestor = Requestor.newRequestor(connection, "requestQueue","replyQueue");
         Replier replier = Replier.newReplier(connection,"requestQueue");
+
+        requestor.setSendMessage("Test Message");
 
         thread(requestor,false);
         Thread.sleep(3000);

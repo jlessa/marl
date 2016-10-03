@@ -1,4 +1,7 @@
+package au.com.marlo.trainning.activemq.producer.test;
+
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
 import javax.jms.Connection;
@@ -70,7 +73,7 @@ public class PublisherTest {
             publisherPublishSubscribe.send("Test Message 1");
 
             String greeting1 = subscriberPublishSubscribe.getGreeting(1000);
-            assertEquals("Test Message 1", greeting1);
+            assertTrue(greeting1.contains("Test Message 1"));
 
             String greeting2 = subscriberPublishSubscribe.getGreeting(1000);
             assertEquals("no greeting", greeting2);
@@ -86,10 +89,10 @@ public class PublisherTest {
             publisherMultipleConsumers.send("Test Message 2");
 
             String greeting1 = subscriber1MultipleConsumers.getGreeting(1000);
-            assertEquals("Test Message 2", greeting1);
+            assertTrue(greeting1.contains("Test Message 2"));
 
             String greeting2 = subscriber2MultipleConsumers.getGreeting(1000);
-            assertEquals("Test Message 2", greeting2);
+            assertTrue(greeting2.contains("Test Message 2") );
 
         } catch (JMSException e) {
             fail("a JMS Exception occurred");

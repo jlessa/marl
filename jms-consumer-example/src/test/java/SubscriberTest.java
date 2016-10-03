@@ -13,6 +13,10 @@ import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+ /*
+     ** Class to test the Subscriber
+     */
+
 public class SubscriberTest {
 
     private static Publisher publisherPublishSubscribe,
@@ -64,6 +68,9 @@ public class SubscriberTest {
 
     }
 
+    /*
+    ** Test if a subscriber receive one specific message from a Topic
+    */
     @Test
     public void testGetGreeting() {
         try {
@@ -79,6 +86,10 @@ public class SubscriberTest {
             fail("a JMS Exception occurred");
         }
     }
+
+    /*
+    ** Test if the subscribers receive the message from a subscribed Topic
+    */
 
     @Test
     public void testMultipleConsumers() {

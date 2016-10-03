@@ -1,3 +1,5 @@
+package au.com.marlo.trainning.activemq.producer.test;
+
 import au.com.marlo.trainning.activemq.producer.Replier;
 import au.com.marlo.trainning.activemq.producer.test.Requestor;
 import org.apache.activemq.ActiveMQConnectionFactory;
@@ -27,7 +29,7 @@ public class ReplierTest {
         connection.start();
         Requestor requestor = Requestor.newRequestor(connection, "requestQueue","replyQueue");
         Replier replier = Replier.newReplier(connection,"requestQueue");
-
+        requestor.setSendMessage("This is a Test Message");
         thread(requestor,false);
         Thread.sleep(3000);
         thread(replier,false);

@@ -18,8 +18,7 @@ public class Main {
             if(args[0].equalsIgnoreCase("topic")){
                 Publisher publisher = new Publisher();
                 publisher.create(connection,"publisher-topic","topic");
-                String timeStamp = new SimpleDateFormat("HH:mm:ss.SSS MM/dd/yyyy").format(new Date());
-                publisher.send("This is a Topic Message " + timeStamp);
+                publisher.send("This is a Topic Message ");
             }else if(args[0].equalsIgnoreCase("queue")){
                 connection.start();
                 Replier replier = Replier.newReplier(connection,"requestQueue");

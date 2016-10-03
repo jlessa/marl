@@ -9,6 +9,9 @@ import javax.jms.Topic;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class Publisher {
 
     private static final Logger LOGGER = LoggerFactory
@@ -41,12 +44,14 @@ public class Publisher {
 
     public void send(String message) throws JMSException {
 
+        String timeStamp = new SimpleDateFormat("HH:mm:ss.SSS MM/dd/yyyy").format(new Date());
+
         // create a JMS TextMessage
-        TextMessage textMessage = session.createTextMessage(message);
+        TextMessage textMessage = session.createTextMessage(message + " " + timeStamp);
 
         // send the message to the topic destination
         messageProducer.send(textMessage);
 
-        LOGGER.debug(clientId + ": sent message with text='{}'", message);
+        LOGGER.info("Send message: " +  textMessage.getText());
     }
 }
