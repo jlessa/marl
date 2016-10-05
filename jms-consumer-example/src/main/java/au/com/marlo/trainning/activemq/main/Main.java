@@ -2,7 +2,8 @@ package au.com.marlo.trainning.activemq.main;
 
 
 
-import au.com.marlo.trainning.activemq.consumer.Requestor;
+import au.com.marlo.trainning.activemq.consumer.QueueConsumer;
+import au.com.marlo.trainning.activemq.consumer.Replier;
 import au.com.marlo.trainning.activemq.consumer.Subscriber;
 import org.apache.activemq.ActiveMQConnectionFactory;
 
@@ -21,15 +22,14 @@ public class Main {
                 subscriber.create(connection,"singleSubscriber","topic","subscribe");
                 subscriber.getGreeting(3000);
             }else if(args[0].equalsIgnoreCase("queue")){
+                QueueConsumer queueConsumer = new QueueConsumer();
                 connection.start();
-                Requestor requestor = Requestor.newRequestor(connection, "requestQueue","replyQueue");
-                if(args[1].equalsIgnoreCase("send")){
-                    requestor.setSendMessage("This is a Request Message");
-                    thread(requestor,false);
-                }
-                else if(args[1].equalsIgnoreCase("receive")){
-                    requestor.receiveSync();
-                }
+                queueConsumer.create(connection,"queue");
+                queueConsumer.getMessage(2000);
+            }else if(args[0].equalsIgnoreCase("reply")){
+                connection.start();
+                Replier replier = Replier.newReplier(connection,"requestQueue");
+                thread(replier,false);
             }
         }
     }

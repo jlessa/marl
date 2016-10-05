@@ -25,7 +25,7 @@
     </dependencies>
 
     <build>
-        <finalName>jms-consumer-example</finalName>
+        <finalName>jms-producer-example</finalName>
         <pluginManagement>
             <plugins>
                 <plugin>

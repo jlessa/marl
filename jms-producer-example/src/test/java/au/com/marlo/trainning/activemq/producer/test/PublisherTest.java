@@ -8,7 +8,7 @@ import javax.jms.Connection;
 import javax.jms.ConnectionFactory;
 import javax.jms.JMSException;
 
-import au.com.marlo.trainning.activemq.producer.test.Subscriber;
+import au.com.marlo.trainning.activemq.producer.test.util.Subscriber;
 import au.com.marlo.trainning.activemq.producer.Publisher;
 import org.apache.activemq.ActiveMQConnection;
 import org.apache.activemq.ActiveMQConnectionFactory;
@@ -16,6 +16,7 @@ import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+//Test Class to check if PublisherTest class publishes a message in a Topic
 public class PublisherTest {
 
     private static Publisher publisherPublishSubscribe,
@@ -23,6 +24,7 @@ public class PublisherTest {
     private static Subscriber subscriberPublishSubscribe,
             subscriber1MultipleConsumers, subscriber2MultipleConsumers;
 
+    // Creates all objects to setup the test
     @BeforeClass
     public static void setUpBeforeClass() throws Exception {
         ConnectionFactory connectionFactory = new ActiveMQConnectionFactory("vm://localhost?broker.persistent=false");
@@ -52,6 +54,8 @@ public class PublisherTest {
 
     }
 
+
+    //Close all the connections
     @AfterClass
     public static void tearDownAfterClass() throws Exception {
         publisherPublishSubscribe.closeConnection();
@@ -67,6 +71,10 @@ public class PublisherTest {
 
     }
 
+
+    /*
+    ** Test if a publisher sends one specific message to a Topic
+    */
     @Test
     public void testGetGreeting() {
         try {
@@ -82,6 +90,10 @@ public class PublisherTest {
             fail("a JMS Exception occurred");
         }
     }
+
+    /*
+    ** Test if a publisher sends  messages to all Subscribers
+    */
 
     @Test
     public void testMultipleConsumers() {

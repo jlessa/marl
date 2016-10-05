@@ -3,11 +3,10 @@ import javax.jms.Connection;
 import javax.jms.ConnectionFactory;
 
 import au.com.marlo.trainning.activemq.producer.Publisher;
-import au.com.marlo.trainning.activemq.producer.Replier;
+import au.com.marlo.trainning.activemq.producer.QueueProducer;
+import au.com.marlo.trainning.activemq.producer.Requestor;
 import org.apache.activemq.ActiveMQConnectionFactory;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 public class Main {
 
@@ -21,8 +20,14 @@ public class Main {
                 publisher.send("This is a Topic Message ");
             }else if(args[0].equalsIgnoreCase("queue")){
                 connection.start();
-                Replier replier = Replier.newReplier(connection,"requestQueue");
-                thread(replier,false);
+                QueueProducer queueProducer = new QueueProducer();
+                queueProducer.create(connection ,"queue");
+                queueProducer.send("This is a Request Message");
+            }else if(args[0].equalsIgnoreCase("request")){
+                connection.start();
+                Requestor requestor = Requestor.newRequestor(connection, "requestQueue","replyQueue");
+                requestor.setSendMessage("This is a Request Message");
+                thread(requestor,false);
             }
         }
     }
