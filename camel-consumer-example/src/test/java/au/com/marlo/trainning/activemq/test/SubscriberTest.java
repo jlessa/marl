@@ -1,119 +1,53 @@
 package au.com.marlo.trainning.activemq.test;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.fail;
 
-import javax.jms.Connection;
-import javax.jms.ConnectionFactory;
-import javax.jms.JMSException;
 
-import au.com.marlo.trainning.activemq.consumer.Subscriber;
-import au.com.marlo.trainning.activemq.test.util.Publisher;
-import org.apache.activemq.ActiveMQConnectionFactory;
-import org.junit.AfterClass;
-import org.junit.BeforeClass;
+import org.apache.camel.CamelContext;
+import org.apache.camel.Exchange;
+import org.apache.camel.builder.RouteBuilder;
+import org.apache.camel.component.mock.MockEndpoint;
+import org.apache.camel.component.properties.PropertiesComponent;
+import org.apache.camel.model.ProcessorDefinition;
+import org.apache.camel.test.blueprint.CamelBlueprintTestSupport;
+import org.junit.Before;
 import org.junit.Test;
 
- /*
- ** Class to test the Subscriber class
- */
+import static org.apache.activemq.camel.component.ActiveMQComponent.activeMQComponent;
 
-public class SubscriberTest {
 
-    private static Publisher publisherPublishSubscribe,
-            publisherMultipleConsumers;
-    private static Subscriber subscriberPublishSubscribe,
-            subscriber1MultipleConsumers, subscriber2MultipleConsumers;
+public class SubscriberTest extends CamelBlueprintTestSupport {
 
-    /**
-     * Creates all objects to setup the test
-     * @throws Exception
-     */
+    private String queuePath = "activemq:topic:test-topic";
 
-    @BeforeClass
-    public static void setUpBeforeClass() throws Exception {
-        ConnectionFactory connectionFactory = new ActiveMQConnectionFactory("vm://localhost?broker.persistent=false");
-        Connection connectionPublisher1 = connectionFactory.createConnection();
-        Connection connectionPublisher2 = connectionFactory.createConnection();
+    protected CamelContext createCamelContext() throws Exception {
+        CamelContext camelContext = super.createCamelContext();
+        camelContext.addComponent("activemq", activeMQComponent("vm://localhost?broker.persistent=false"));
 
-        Connection connectionSubscriber1 = connectionFactory.createConnection();
-        Connection connectionSubscriber2 = connectionFactory.createConnection();
-        Connection connectionSubscriber3 = connectionFactory.createConnection();
-
-        publisherPublishSubscribe = new Publisher();
-        publisherPublishSubscribe.create(connectionPublisher1,"publisher-topic",
-                "topic");
-
-        publisherMultipleConsumers = new Publisher();
-        publisherMultipleConsumers.create(connectionPublisher2,"publisher-topicMultipleConsumers",
-                "topicMultipleConsumers");
-
-        subscriberPublishSubscribe = new Subscriber();
-        subscriberPublishSubscribe.create(connectionSubscriber1,"singleSubscriber","topic","subscribe");
-
-        subscriber1MultipleConsumers = new Subscriber();
-        subscriber1MultipleConsumers.create(connectionSubscriber2,"multipleSubscriber1","topicMultipleConsumers","subscribe1");
-
-        subscriber2MultipleConsumers = new Subscriber();
-        subscriber2MultipleConsumers.create(connectionSubscriber3,"multipleSubscriber2","topicMultipleConsumers","subscribe2");
-
+        return camelContext;
     }
 
-    /**
-     * Close all the connections
-     */
-
-    @AfterClass
-    public static void tearDownAfterClass() throws Exception {
-        publisherPublishSubscribe.closeConnection();
-        publisherMultipleConsumers.closeConnection();
-
-        subscriberPublishSubscribe.removeSubscriber();
-        subscriber1MultipleConsumers.removeSubscriber();
-        subscriber2MultipleConsumers.removeSubscriber();
-
-        subscriberPublishSubscribe.closeConnection();
-        subscriber1MultipleConsumers.closeConnection();
-        subscriber2MultipleConsumers.closeConnection();
-
+    // override this method, and return the location of our Blueprint XML file to be used for testing
+    @Override
+    protected String getBlueprintDescriptor() {
+        return "OSGI-INF/blueprint/topic.xml";
     }
 
-    /*
-    ** Test if a subscriber receive one specific message from a Topic
-    */
+    // here we have regular JUnit @Test method
     @Test
-    public void testGetGreeting() {
-        try {
-            publisherPublishSubscribe.send("Test Message 1");
+    public void testRoute() throws Exception {
+        MockEndpoint mock = getMockEndpoint("mock:out");
+        String expectedMessage = "Test Message";
+        // set mock expectations
+        mock.expectedMessageCount(1);
 
-            String greeting1 = subscriberPublishSubscribe.getGreeting(1000);
-            assertEquals("Test Message 1", greeting1);
+        // send a message
+        template.sendBody(queuePath, "Test Message");
 
-            String greeting2 = subscriberPublishSubscribe.getGreeting(1000);
-            assertEquals("no greeting", greeting2);
 
-        } catch (JMSException e) {
-            fail("a JMS Exception occurred");
-        }
-    }
+        // assert mocks
+        //getMockEndpoint("mock:out").setExpectedCount(1);
+        assertMockEndpointsSatisfied();
 
-    /*
-    ** Test if the subscribers receive the message from a subscribed Topic
-    */
-    @Test
-    public void testMultipleConsumers() {
-        try {
-            publisherMultipleConsumers.send("Test Message 2");
-
-            String greeting1 = subscriber1MultipleConsumers.getGreeting(1000);
-            assertEquals("Test Message 2", greeting1);
-
-            String greeting2 = subscriber2MultipleConsumers.getGreeting(1000);
-            assertEquals("Test Message 2", greeting2);
-
-        } catch (JMSException e) {
-            fail("a JMS Exception occurred");
-        }
     }
 
 }
