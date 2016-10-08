@@ -31,7 +31,7 @@ public class SubscriberTest extends CamelTestSupport {
     private String topicPath = "activemq:topic:test-topic";
 
     protected void sendExchange(final Object expectedBody) {
-        template.sendBodyAndHeader(topicPath,expectedBody, "ReplyTest", "message");
+        template.sendBodyAndHeader(topicPath, expectedBody, "ReplyTest", "header");
     }
 
     protected CamelContext createCamelContext() throws Exception {
@@ -50,6 +50,7 @@ public class SubscriberTest extends CamelTestSupport {
         return new Subscriber();
     }
 
+
     @Before
     public void setUp() throws Exception {
         super.setUp();
@@ -62,7 +63,8 @@ public class SubscriberTest extends CamelTestSupport {
         sendExchange(expectedBody);
 
         resultEndpoint.setExpectedCount(3);
-        resultEndpoint.message(0).header("ReplyTest").isEqualTo("message");
+        resultEndpoint.message(0).header("ReplyTest").isEqualTo("header");
+        resultEndpoint.message(0).body().isEqualTo(expectedBody);
 
         resultEndpoint.assertIsSatisfied();
     }

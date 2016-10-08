@@ -71,6 +71,7 @@ public class RequestReplyTest extends CamelTestSupport{
 
         replyEndpoint.whenAnyExchangeReceived(createProcessor());
         resultEndpoint.setExpectedCount(1);
+        resultEndpoint.message(0).body().isEqualTo(expectedMessage);
 
         resultEndpoint.assertIsSatisfied();
     }

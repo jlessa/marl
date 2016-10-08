@@ -1,13 +1,10 @@
+
+
 package au.com.marlo.trainning.activemq.test;
 
-
-
 import org.apache.camel.CamelContext;
-import org.apache.camel.Exchange;
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.component.mock.MockEndpoint;
-import org.apache.camel.component.properties.PropertiesComponent;
-import org.apache.camel.model.ProcessorDefinition;
 import org.apache.camel.test.blueprint.CamelBlueprintTestSupport;
 import org.junit.Before;
 import org.junit.Test;
@@ -15,7 +12,7 @@ import org.junit.Test;
 import static org.apache.activemq.camel.component.ActiveMQComponent.activeMQComponent;
 
 
-public class SubscriberTest extends CamelBlueprintTestSupport {
+public class RequestReplyTest extends CamelBlueprintTestSupport {
 
     protected MockEndpoint resultEndpoint;
 
@@ -30,7 +27,23 @@ public class SubscriberTest extends CamelBlueprintTestSupport {
     // override this method, and return the location of our Blueprint XML file to be used for testing
     @Override
     protected String getBlueprintDescriptor() {
-        return "OSGI-INF/blueprint/topic.xml";
+        return "OSGI-INF/blueprint/reply.xml";
+    }
+
+    @Override
+    protected RouteBuilder createRouteBuilder() throws Exception{
+        return new RouteBuilder() {
+            @Override
+            public void configure() throws Exception {
+                from("timer://time?period=60000")
+                        .setBody(simple("This is a Request Message " + "${date:now:HH:mm:ss.SSS MM/dd/yyyy}"))
+                        .log("${body}")
+                        .routeId("requestReply")
+                        .inOut("activemq:queue:queueRequest")
+                        .to("mock:out")
+                        .log("${body}");
+            }
+        };
     }
 
     @Before
@@ -41,13 +54,12 @@ public class SubscriberTest extends CamelBlueprintTestSupport {
 
     @Test
     public void testJmsRouteWithTextMessage() throws Exception {
-        String expectedBody = "This is a Request Message";
+        String expectedBody = "This is a Response Message";
 
         resultEndpoint.setExpectedCount(1);
         resultEndpoint.message(0).body().contains(expectedBody);
 
         resultEndpoint.assertIsSatisfied();
     }
-
 
 }

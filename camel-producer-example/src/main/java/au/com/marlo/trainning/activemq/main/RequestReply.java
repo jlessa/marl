@@ -22,12 +22,14 @@ public class RequestReply extends RouteBuilder{
 
         try {
             final CamelContext context = new DefaultCamelContext();
+
             RequestReply route = new RequestReply();
+
             PropertiesComponent propertiesComponent = new PropertiesComponent();
             propertiesComponent.setLocation("classpath:properties.properties");
             context.addComponent("properties",propertiesComponent);
-            context.addRoutes(route);
 
+            context.addRoutes(route);
             context.start();
 
             Thread.sleep(4000);
@@ -46,7 +48,5 @@ public class RequestReply extends RouteBuilder{
                 .inOut("properties:{{inOutEndpoint}}")
                 .to("properties:{{endPoint}}")
                 .log("${body}");
-
-
     }
 }

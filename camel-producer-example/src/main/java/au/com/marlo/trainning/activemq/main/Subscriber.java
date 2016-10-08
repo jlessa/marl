@@ -35,9 +35,9 @@ public class Subscriber extends RouteBuilder{
 
     @Override
     public void configure() throws Exception {
-            from("properties:{{topicEndPoint}}")
-                .routeId("topic1")
-                .to("properties:{{endPoint}}");
+        from("properties:{{topicEndPoint}}")
+            .routeId("topic1")
+            .to("properties:{{endPoint}}");
 
         from("properties:{{topicEndPoint}}")
                 .routeId("topic2")
