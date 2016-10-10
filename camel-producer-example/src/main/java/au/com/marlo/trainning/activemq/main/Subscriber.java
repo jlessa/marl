@@ -1,32 +1,29 @@
 package au.com.marlo.trainning.activemq.main;
 
-
-import org.apache.activemq.ActiveMQConnectionFactory;
-import org.apache.camel.CamelContext;
 import org.apache.camel.builder.RouteBuilder;
-import org.apache.camel.component.jms.JmsComponent;
 import org.apache.camel.component.properties.PropertiesComponent;
-import org.apache.camel.impl.DefaultCamelContext;
-
-import javax.jms.ConnectionFactory;
+import org.apache.camel.main.Main;
 
 
 public class Subscriber extends RouteBuilder{
 
+    private Main main;
+
+    public void boot() throws Exception {
+        this.main = new Main();
+        this.main.addRouteBuilder(new Subscriber());
+        PropertiesComponent propertiesComponent = new PropertiesComponent();
+        propertiesComponent.setLocation("classpath:properties.properties");
+        this.main.bind("properties", propertiesComponent);
+        this.main.run();
+    }
+
+
     public static void main(String[] args) throws Exception {
 
         try {
-            final CamelContext context = new DefaultCamelContext();
-
-            PropertiesComponent propertiesComponent = new PropertiesComponent();
-            propertiesComponent.setLocation("classpath:properties.properties");
-            context.addComponent("properties",propertiesComponent);
-
-            context.addRoutes(new Subscriber());
-
-            context.start();
-
-            Thread.sleep(4000);
+            Subscriber subscriber = new Subscriber();
+            subscriber.boot();
 
         }catch (Exception ex){
             System.out.println(ex.getMessage());
