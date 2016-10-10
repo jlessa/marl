@@ -24,12 +24,14 @@ public class RequestReplyTest extends CamelBlueprintTestSupport {
         return camelContext;
     }
 
-    // override this method, and return the location of our Blueprint XML file to be used for testing
+    // Loads the Blueprint File
     @Override
     protected String getBlueprintDescriptor() {
         return "OSGI-INF/blueprint/reply.xml";
     }
 
+
+    //Creates a route to request a message
     @Override
     protected RouteBuilder createRouteBuilder() throws Exception{
         return new RouteBuilder() {
@@ -52,8 +54,9 @@ public class RequestReplyTest extends CamelBlueprintTestSupport {
         resultEndpoint = (MockEndpoint) context.getEndpoint("mock:out");
     }
 
+    //Test if can reply a message follow the request reply pattern
     @Test
-    public void testJmsRouteWithTextMessage() throws Exception {
+    public void testRouteWithTextMessage() throws Exception {
         String expectedBody = "This is a Response Message";
 
         resultEndpoint.setExpectedCount(1);

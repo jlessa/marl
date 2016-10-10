@@ -7,16 +7,16 @@
       http://camel.apache.org/schema/blueprint http://camel.apache.org/schema/blueprint/camel-blueprint.xsd">
 
     <camel:camelContext>
+        <camel:propertyPlaceholder id="properties" location="test.properties"/>
         <camel:route>
             <!--<camel:from uri="test-jms:queue:test-queue" />-->
             <camel:from uri="timer://time?period=60000" />
             <camel:setBody>
                 <camel:simple>
-                    This is a Request Message
+                    This is a Request Message ${date:now:HH:mm:ss.SSS MM/dd/yyyy}
                 </camel:simple>
             </camel:setBody>
-            <camel:to uri="test-jms:topic:test-topic"></camel:to>
-            <camel:to uri="mock:result" />
+            <camel:to uri="{{topicEndPoint}}" />
         </camel:route>
     </camel:camelContext>
 

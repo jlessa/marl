@@ -21,7 +21,7 @@ import static org.apache.activemq.camel.component.ActiveMQComponent.activeMQComp
 import static org.apache.camel.component.jms.JmsComponent.jmsComponentAutoAcknowledge;
 
 /*
-** Class to test if the Requestor send and receive an specific message
+** Class to test the Request Reply Pattern
 */
 public class RequestReplyTest extends CamelTestSupport{
 
@@ -29,7 +29,7 @@ public class RequestReplyTest extends CamelTestSupport{
     protected MockEndpoint resultEndpoint;
     protected MockEndpoint replyEndpoint;
 
-    //create a camel context to set the queue embeded
+    //Create a camel context to set the embedded activemq
     protected CamelContext createCamelContext() throws Exception {
         CamelContext camelContext = super.createCamelContext();
         camelContext.addComponent("activemq", activeMQComponent("vm://localhost?broker.persistent=false"));
@@ -41,7 +41,7 @@ public class RequestReplyTest extends CamelTestSupport{
         return camelContext;
     }
 
-    //test the created Route
+    //Create Route
     protected RouteBuilder createRouteBuilder() throws Exception {
         return new RequestReply();
     }
@@ -64,7 +64,7 @@ public class RequestReplyTest extends CamelTestSupport{
     }
 
 
-    //Test if the queue received an specific message
+    //Test if the route is requesting and receiving a reply
     @Test
     public void testJmsRouteWithTextMessage() throws Exception {
         String expectedMessage = "This is a Response Message";

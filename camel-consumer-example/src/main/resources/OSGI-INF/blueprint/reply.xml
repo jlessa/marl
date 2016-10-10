@@ -8,10 +8,14 @@
 
     <camel:camelContext>
         <camel:propertyPlaceholder id="properties" location="test.properties"/>
-        <camel:route>
+        <camel:route id="replyroute">
             <!--<camel:from uri="test-jms:queue:test-queue" />-->
-            <camel:from uri="{{queueEndPoint}}" />
-            <camel:to uri="{{endPoint}}" />
+            <camel:from uri="properties:{{inOutEndpoint}}" />
+            <camel:setBody>
+                <camel:simple>
+                    This is a Response Message ${date:now:HH:mm:ss.SSS MM/dd/yyyy}
+                </camel:simple>
+            </camel:setBody>
         </camel:route>
     </camel:camelContext>
 

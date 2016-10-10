@@ -12,6 +12,7 @@ public class ConsumerTest extends CamelBlueprintTestSupport {
 
     private String queuePath = "activemq:queue:test-queue";
 
+    // Create the Camel Context
     protected CamelContext createCamelContext() throws Exception {
         CamelContext camelContext = super.createCamelContext();
         camelContext.addComponent("activemq", activeMQComponent("vm://localhost?broker.persistent=false"));
@@ -19,13 +20,13 @@ public class ConsumerTest extends CamelBlueprintTestSupport {
         return camelContext;
     }
 
-    // override this method, and return the location of our Blueprint XML file to be used for testing
+    // Load the blueprint file
     @Override
     protected String getBlueprintDescriptor() {
         return "OSGI-INF/blueprint/queue.xml";
     }
 
-    // here we have regular JUnit @Test method
+    // Tests if the queue can consume a message
     @Test
     public void testRoute() throws Exception {
         MockEndpoint mock = getMockEndpoint("mock:out");

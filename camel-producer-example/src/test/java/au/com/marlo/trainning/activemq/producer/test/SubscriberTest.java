@@ -24,7 +24,9 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import org.springframework.jms.connection.JmsTransactionManager;
 
-//Test Class to check if SubscriberTest class publishes a message in a Topic
+/*
+** Class to test if the Subscriber send and receive an specific messages to all subscribers
+*/
 public class SubscriberTest extends CamelTestSupport {
 
     protected MockEndpoint resultEndpoint;
@@ -34,6 +36,7 @@ public class SubscriberTest extends CamelTestSupport {
         template.sendBodyAndHeader(topicPath, expectedBody, "ReplyTest", "header");
     }
 
+    //create a camel context to set the queue embeded
     protected CamelContext createCamelContext() throws Exception {
         CamelContext camelContext = super.createCamelContext();
         camelContext.addComponent("activemq", activeMQComponent("vm://localhost?broker.persistent=false"));
@@ -57,6 +60,8 @@ public class SubscriberTest extends CamelTestSupport {
         resultEndpoint = (MockEndpoint) context.getEndpoint("mock:out");
     }
 
+
+    //Test if all subscribers are receiving an specific message from a publisher
     @Test
     public void testJmsRouteWithTextMessage() throws Exception {
         String expectedBody = "Test Message";

@@ -15,7 +15,7 @@ import org.junit.Test;
 import static org.apache.activemq.camel.component.ActiveMQComponent.activeMQComponent;
 
 
-public class SubscriberTest extends CamelBlueprintTestSupport {
+public class PublisherTest extends CamelBlueprintTestSupport {
 
     protected MockEndpoint resultEndpoint;
 
@@ -27,20 +27,22 @@ public class SubscriberTest extends CamelBlueprintTestSupport {
         return camelContext;
     }
 
-    // override this method, and return the location of our Blueprint XML file to be used for testing
+    // Load the blueprint file
     @Override
     protected String getBlueprintDescriptor() {
         return "OSGI-INF/blueprint/topic.xml";
     }
 
+    // Setup the Mock Endpoint
     @Before
     public void setUp() throws Exception {
         super.setUp();
         resultEndpoint = (MockEndpoint) context.getEndpoint("mock:out");
     }
 
+    // Tests if the route can pubish a message to a topic
     @Test
-    public void testJmsRouteWithTextMessage() throws Exception {
+    public void testRouteWithTextMessage() throws Exception {
         String expectedBody = "This is a Request Message";
 
         resultEndpoint.setExpectedCount(1);
