@@ -2,13 +2,20 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>au.com.marlo.trainning</groupId>
-    <artifactId>camel-producer-example</artifactId>
+    <groupId>au.com.marlo.trainning.activemq</groupId>
+    <artifactId>camel-consumer-example</artifactId>
     <version>1.0</version>
 
+    <repositories>
+        <repository>
+            <id>repository.jboss.org-public</id>
+            <name>JBoss.org Maven repositor</name>
+            <url>https://repository.jboss.org/nexus/content/groups/public</url>
+
+        </repository>
+    </repositories>
     <dependencies>
 
         <dependency>
@@ -43,21 +50,15 @@
 
         <dependency>
             <groupId>org.apache.camel</groupId>
-            <artifactId>camel-test</artifactId>
+            <artifactId>camel-test-blueprint</artifactId>
             <version>2.15.0</version>
             <scope>test</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>org.osgi</groupId>
-            <artifactId>org.osgi.core</artifactId>
-            <version>4.0.0</version>
         </dependency>
 
     </dependencies>
 
     <build>
-        <finalName>camel-producer-example</finalName>
+        <finalName>camel-consumer-example</finalName>
         <pluginManagement>
             <plugins>
                 <plugin>
