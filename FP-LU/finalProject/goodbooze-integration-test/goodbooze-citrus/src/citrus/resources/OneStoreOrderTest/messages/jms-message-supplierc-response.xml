@@ -1,0 +1,3 @@
+<tns:response xmlns:tns="http://supplier.com/supplierc/messages/response/v1.0">
+	<tns:orderNumber>111111111</tns:orderNumber>
+</tns:response>

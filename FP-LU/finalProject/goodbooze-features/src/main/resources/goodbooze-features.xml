@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<features name="goodbooze-features-${project.version}"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://karaf.apache.org/xmlns/features/v1.0.0"
+    xsi:schemaLocation="http://karaf.apache.org/xmlns/features/v1.0.0 http://karaf.apache.org/xmlns/features/v1.0.0">
+
+    <!-- all features in one -->
+    <feature name="goodbooze" version="${project.version}">
+        <feature version="${project.version}">goodbooze-canonical-model</feature>
+        <feature version="${project.version}">goodbooze-cbr</feature>
+        <feature version="${project.version}">goodbooze-db-translator</feature>
+        <feature version="${project.version}">goodbooze-mysql-ds</feature>
+        <feature version="${project.version}">goodbooze-order-manager</feature>
+        <feature version="${project.version}">goodbooze-soap-adapter</feature>
+        <feature version="${project.version}">goodbooze-splitter</feature>
+        <feature version="${project.version}">goodbooze-supplierc-translator</feature>
+        <feature version="${project.version}">goodbooze-suppliera-translator</feature>
+        <feature version="${project.version}">goodbooze-supplierb-translator</feature>
+    </feature>
+    
+    <!-- canonical model feature -->
+    <feature name="goodbooze-canonical-model" version="${project.version}">
+        <bundle start="false">mvn:${groupId}/goodbooze-canonical-model/${project.version}</bundle>
+    </feature>
+    
+    <!--  cbr feature -->
+    <feature name="goodbooze-cbr" version="${project.version}" install="true">
+        <configfile finalname="/etc/${groupId}.cbr.cfg" override="true">
+            mvn:${groupId}/goodbooze-cbr/${project.version}/cfg/${build.env}
+        </configfile>
+        <bundle start="false">mvn:${groupId}/goodbooze-cbr/${project.version}</bundle>
+    </feature>
+    
+    <!-- db translator feature -->
+    <feature name="goodbooze-db-translator" version="${project.version}" install="true">
+        <bundle>wrap:mvn:mysql/mysql-connector-java/5.1.34</bundle>
+        <feature>jpa</feature>
+        <feature>jndi</feature>
+        <feature>transaction</feature>
+        <bundle>mvn:org.apache.geronimo.specs/geronimo-jpa_2.0_spec/1.1</bundle>
+        <bundle>mvn:commons-collections/commons-collections/3.2.1</bundle>
+        <bundle>mvn:commons-dbcp/commons-dbcp/1.4</bundle>
+        <bundle>wrap:mvn:net.sourceforge.serp/serp/1.13.1</bundle>
+        <bundle>mvn:org.apache.openjpa/openjpa/2.2.2</bundle>
+        <configfile finalname="/etc/${groupId}.db.translator.cfg" override="true">
+            mvn:${groupId}/goodbooze-db-translator/${project.version}/cfg/${build.env}
+        </configfile>
+        <bundle start="false">mvn:${groupId}/goodbooze-db-translator/${project.version}</bundle>
+    </feature>
+    
+    <!-- mysql ds feature -->
+    <feature name="goodbooze-mysql-ds" version="${project.version}" install="true">
+        <configfile finalname="/etc/${groupId}.mysql.ds.cfg" override="true">
+            mvn:${groupId}/goodbooze-mysql-ds/${project.version}/cfg/${build.env}
+        </configfile>
+        <bundle start="false">mvn:${groupId}/goodbooze-mysql-ds/${project.version}</bundle>
+    </feature>
+    
+    <!-- order manager feature -->
+    <feature name="goodbooze-order-manager" version="${project.version}" install="true">
+        <configfile finalname="/etc/${groupId}.order.manager.cfg" override="true">
+            mvn:${groupId}/goodbooze-order-manager/${project.version}/cfg/${build.env}
+        </configfile>
+        <bundle start="false">mvn:${groupId}/goodbooze-order-manager/${project.version}</bundle>
+    </feature>
+    
+    <!-- soap adapter feature -->
+    <feature name="goodbooze-soap-adapter" version="${project.version}" install="true">
+        <configfile finalname="/etc/${groupId}.soap.adapter.cfg" override="true">
+            mvn:${groupId}/goodbooze-soap-adapter/${project.version}/cfg/${build.env}
+        </configfile>
+        <bundle start="false">mvn:${groupId}/goodbooze-soap-adapter/${project.version}</bundle>
+    </feature>
+    
+    <!-- splitter feature -->
+    <feature name="goodbooze-splitter" version="${project.version}" install="true">
+        <configfile finalname="/etc/${groupId}.splitter.cfg" override="true">
+            mvn:${groupId}/goodbooze-splitter/${project.version}/cfg/${build.env}
+        </configfile>
+        <bundle start="false">mvn:${groupId}/goodbooze-splitter/${project.version}</bundle>
+    </feature>
+    
+    <!-- supplier a translator feature -->
+    <feature name="goodbooze-suppliera-translator" version="${project.version}" install="true">
+    	<feature>camel-http4</feature>
+    	<feature>camel-xmljson</feature>
+        <configfile finalname="/etc/${groupId}.suppliera.translator.cfg" override="true">
+            mvn:${groupId}/goodbooze-suppliera-translator/${project.version}/cfg/${build.env}
+        </configfile>
+        <bundle start="false">mvn:${groupId}/goodbooze-suppliera-translator/${project.version}</bundle>
+    </feature>
+    <!-- supplier b translator feature -->
+    <feature name="goodbooze-supplierb-translator" version="${project.version}" install="true">
+        <configfile finalname="/etc/${groupId}.supplierb.translator.cfg" override="true">
+            mvn:${groupId}/goodbooze-supplierb-translator/${project.version}/cfg/${build.env}
+        </configfile>
+        <bundle start="false">mvn:${groupId}/goodbooze-supplierb-translator/${project.version}</bundle>
+    </feature>
+    
+    <!-- supplier c translator feature -->
+    <feature name="goodbooze-supplierc-translator" version="${project.version}" install="true">
+        <configfile finalname="/etc/${groupId}.supplierc.translator.cfg" override="true">
+            mvn:${groupId}/goodbooze-supplierc-translator/${project.version}/cfg/${build.env}
+        </configfile>
+        <bundle start="false">mvn:${groupId}/goodbooze-supplierc-translator/${project.version}</bundle>
+    </feature>
+    
+</features>

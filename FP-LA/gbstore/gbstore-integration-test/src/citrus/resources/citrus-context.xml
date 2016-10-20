@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:citrus="http://www.citrusframework.org/schema/config"
+	xmlns:citrus-jms="http://www.citrusframework.org/schema/jms/config"
+	xmlns:citrus-ws="http://www.citrusframework.org/schema/ws/config"
+	xmlns:citrus-http="http://www.citrusframework.org/schema/http/config"
+	xmlns:citrus-test="http://www.citrusframework.org/schema/testcase"
+	xmlns:citrus-jms-test="http://www.citrusframework.org/schema/jms/testcase"
+	xmlns:amq="http://activemq.apache.org/schema/core" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+       http://www.citrusframework.org/schema/config http://www.citrusframework.org/schema/config/citrus-config.xsd
+       http://www.citrusframework.org/schema/jms/config http://www.citrusframework.org/schema/jms/config/citrus-jms-config.xsd
+       http://www.citrusframework.org/schema/ws/config http://www.citrusframework.org/schema/ws/config/citrus-ws-config.xsd
+       http://www.citrusframework.org/schema/http/config http://www.citrusframework.org/schema/http/config/citrus-http-config.xsd
+       http://www.citrusframework.org/schema/testcase http://www.citrusframework.org/schema/testcase/citrus-testcase.xsd
+       http://www.citrusframework.org/schema/jms/testcase http://www.citrusframework.org/schema/jms/testcase/citrus-jms-testcase.xsd
+       http://activemq.apache.org/schema/core http://activemq.apache.org/schema/core/activemq-core.xsd">
+       
+	<!-- Common settings -->
+	<context:property-placeholder location="classpath:conf/citrus.properties" />
+	<citrus:global-variables>
+		<citrus:variable name="project.name" value="Citrus Integration Tests" />
+	</citrus:global-variables>
+
+	<!-- Default namespace mappings used in XPath expression evaluations -->
+	<citrus:namespace-context>
+		<citrus:namespace prefix="nst2"
+			uri="http://supplierb.com.au/types/v1.0" />
+		<citrus:namespace prefix="nst3"
+			uri="http://supplierc.com.au/types/v1.0" />
+	</citrus:namespace-context>
+
+	<!-- JMS connection factory and message broker -->
+	<bean id="connectionFactory" class="org.apache.activemq.ActiveMQConnectionFactory">
+		<property name="brokerURL" value="${jms.broker.url}" />
+		<property name="watchTopicAdvisories" value="false" />
+		<property name="userName" value="${jms.broker.user}" />
+		<property name="password" value="${jms.broker.password}" />
+	</bean>
+	
+	<bean id="supplierDS" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+        <property name="url" value="${db.url}"/>
+        <property name="username" value="${db.user}"/>
+        <property name="password" value="${db.password}"/>
+        <property name="driverClassName" value="${db.driver}"/>
+        <property name="removeAbandoned" value="true"/>
+	</bean> 
+
+	<!-- Default SOAP Message Factory (SOAP 1.1) -->
+	<bean id="messageFactory" class="org.springframework.ws.soap.saaj.SaajSoapMessageFactory" />
+	
+    <citrus-ws:client id="soapClient" request-url="${soap.service.url}" timeout="${service.timeout}"/>
+    
+    <!-- JSON message validator -->
+    <bean id="jsonValidator" class="com.consol.citrus.validation.json.JsonTextMessageValidator"/>
+    
+    <!-- XML message validator -->
+    <!-- <bean id="defaultXmlMessageValidator" class="com.consol.citrus.validation.xml.DomXmlMessageValidator"/> -->
+    
+    <!-- Rest Provider -->
+     <citrus-http:server id="supplierAProvider" port="${suppliera.port}" resource-base="src/citrus/resources" auto-start="true" timeout="${service.timeout}" /> 
+    
+    <!-- Soap Provider -->
+      <citrus-ws:server id="supplierBProvider" port="${supplierb.port}" resource-base="src/citrus/resources" auto-start="true" timeout="${service.timeout}" />
+     
+     <!-- JMS Provider -->                   
+    <citrus-jms:sync-endpoint id="supplierCProvider" destination-name="${jms.supplierc.queue}" timeout="${service.timeout}"/>
+	<!-- before suite test actions -->
+ 	<citrus:before-suite id="purgeBeforeSuite">
+		<citrus:actions>
+			<citrus-test:sql datasource="supplierDS">
+	            <citrus-test:resource file="classpath:script/database.sql"/>
+	        </citrus-test:sql>
+		      <citrus-test:purge-endpoint>
+		          <citrus-test:endpoint name="supplierAProvider"/>
+		          <citrus-test:endpoint name="supplierBProvider"/>
+		          <citrus-test:endpoint name="supplierCProvider"/>
+		      </citrus-test:purge-endpoint>
+		      <citrus-jms-test:purge-jms-queues>
+				<citrus-jms-test:queue name="${jms.supplierc.queue}" />
+			</citrus-jms-test:purge-jms-queues>
+		  </citrus:actions>
+	</citrus:before-suite>
+	<!-- clean up database -->
+	 <citrus:before-test id="cleanBase">
+		<citrus:actions>
+			<citrus-test:echo>
+				<citrus-test:message>cleaning database</citrus-test:message>
+			</citrus-test:echo>
+			<citrus-test:sql datasource="supplierDS">
+				<citrus-test:statement>truncate Entry</citrus-test:statement>
+				<citrus-test:statement>truncate ItemStoreOrder</citrus-test:statement>
+				<citrus-test:statement>truncate ItemSupplierOrder</citrus-test:statement>
+				<citrus-test:statement>truncate StoreOrder</citrus-test:statement>
+				<citrus-test:statement>truncate SupplierOrder</citrus-test:statement>
+				<citrus-test:statement>truncate SupplierOrder_StoreOrder</citrus-test:statement>
+				<citrus-test:statement>truncate Entry_StoreOrder</citrus-test:statement>
+				<citrus-test:statement>truncate StoreOrder_ItemStoreOrder</citrus-test:statement>
+				<citrus-test:statement>truncate SupplierOrder_ItemSupplierOrder</citrus-test:statement>
+				<citrus-test:statement>truncate OrderNumber</citrus-test:statement>
+			</citrus-test:sql>
+		</citrus:actions>
+	</citrus:before-test>
+	
+</beans>

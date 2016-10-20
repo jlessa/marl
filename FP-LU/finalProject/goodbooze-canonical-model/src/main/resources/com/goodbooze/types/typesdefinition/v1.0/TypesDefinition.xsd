@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://goodbooze.com/types/typesdefinition/v1.0"
+	xmlns:tns="http://goodbooze.com/types/typesdefinition/v1.0"
+	elementFormDefault="qualified">
+
+	<xs:complexType name="storeOrder">
+		<xs:sequence>
+			<xs:element name="status" type="xs:string" minOccurs="1" />
+			<xs:element name="insertDate" type="xs:date" minOccurs="1" />
+			<xs:element name="id" type="xs:int" minOccurs="1" />
+			<xs:element name="updateDate" type="xs:date" minOccurs="0" />
+			<xs:element name="itemStoreOrderList" type="tns:itemStoreOrderList"
+				minOccurs="1" />
+			<xs:element name="store" type="tns:store" minOccurs="1" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="itemStoreOrderList">
+		<xs:sequence>
+			<xs:element name="itemStoreOrder" type="tns:itemStoreOrder"
+				minOccurs="1" maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="itemStoreOrder">
+		<xs:sequence>
+			<xs:element name="id" type="xs:int" minOccurs="0" maxOccurs="1" />
+			<xs:element name="quantity" type="xs:long" minOccurs="1" maxOccurs="1" />
+			<xs:element name="product" type="tns:product" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="store">
+		<xs:sequence>
+			<xs:element name="id" type="xs:int" />
+			<xs:element name="name" type="xs:string" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="product">
+		<xs:sequence>
+			<xs:element name="internalId" type="xs:int" />
+			<xs:element name="name" type="xs:string" />
+			<xs:element name="productSupplierId" type="xs:int" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="supplierOrder">
+		<xs:sequence>
+			<xs:element name="id" type="xs:int" />
+			<xs:element name="status" type="xs:string" />
+			<xs:element name="insertDate" type="xs:date" />
+			<xs:element name="orderNumber" type="xs:int" />
+			<xs:element name="updateDate" type="xs:date" />
+			<xs:element name="supplier" type="tns:supplier" />
+			<xs:element name="itemSupplierOrderList" type="tns:itemSupplierOrderList" />
+			<xs:element name="storeOrderList" type="tns:storeOrderIdList" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="storeOrderIdList">
+		<xs:sequence>
+			<xs:element name="storeOrder" type="xs:int" minOccurs="1" maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="itemSupplierOrderList">
+		<xs:sequence>
+			<xs:element name="itemSupplier" type="tns:itemSupplier"
+				minOccurs="1" maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+
+
+	<xs:complexType name="itemSupplier">
+		<xs:sequence>
+			<xs:element name="id" type="xs:int" />
+			<xs:element name="quantity" type="xs:long" />
+			<xs:element name="product" type="tns:product"></xs:element>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="supplier">
+		<xs:sequence>
+			<xs:element name="id" type="xs:int" />
+			<xs:element name="name" type="xs:string" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="entry">
+		<xs:sequence>
+			<xs:element name="entryId" type="xs:int" minOccurs="1" />
+			<xs:element name="insertDate" type="xs:date" minOccurs="1" />
+			<xs:element name="processDate" type="xs:date" minOccurs="0" />
+			<xs:element name="storeOrderList" type="tns:storeOrderList"  minOccurs="1" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="storeOrderList">
+		<xs:sequence>
+			<xs:element name="storeOrder" type="tns:storeOrder"
+				minOccurs="1" maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="supplierOrderList">
+		<xs:sequence>
+			<xs:element name="supplierOrder" type="tns:supplierOrder"
+				minOccurs="1" maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+
+</xs:schema>

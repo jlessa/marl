@@ -1,0 +1,158 @@
+<xs:schema 
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:dbm="http://gbstore.com.au/types/dbtranslator/v1.0"
+	targetNamespace="http://gbstore.com.au/types/dbtranslator/v1.0"
+	elementFormDefault="qualified">
+	
+	<xs:complexType name="DBOrderListType">
+		<xs:sequence>
+			<xs:element name="storeOrder" type="dbm:DBOrderType" minOccurs="1" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="DBOrderType">
+		<xs:sequence>
+			<xs:element name="storeOrderId" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="itemOrderList" type="dbm:ItemOrderListType"/>
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="SupplierOrderType">
+		<xs:sequence>
+			<xs:element name="supplier" type="dbm:SupplierType"/>
+			<xs:element name="itemSupplierOrderList">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="itemSupplierOrder" type="dbm:ItemSupplierOrderType" minOccurs="1" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+		
+	</xs:complexType>
+	
+	<xs:complexType name="SupplierOrderReplyType">
+		<xs:sequence>
+			<xs:element name="supplierOrderId" type="xs:string"/>
+			<xs:element name="supplier" type="dbm:SupplierType"/>
+			<xs:element name="itemSupplierOrderList" type="dbm:ItemOrderListType"/>
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="EntryReqType">
+		<xs:sequence>
+			<xs:element name="insertDate" type="xs:dateTime"/>
+			<xs:element name="processDate" type="xs:dateTime"/>
+			<xs:element name="storeOrderList" type="dbm:StoreOrderListType"/>			
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="EntryType">
+		<xs:sequence>
+			<xs:element name="entryId" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="insertDate" type="xs:dateTime"/>
+			<xs:element name="processDate" type="xs:dateTime"/>
+			<xs:element name="storeOrderList" type="dbm:StoreOrderListType"/>			
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="StoreOrderListType"> 
+		<xs:sequence>
+			<xs:element name="storeOrder" type="dbm:StoreOrderType" minOccurs="1" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="StoreOrderType">
+		<xs:sequence>
+			<xs:element name="storeOrderId" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="store" type="dbm:StoreType"/>
+			<xs:element name="itemStoreOrderList">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="itemStoreOrder" type="dbm:ItemStoreOrderType" minOccurs="1" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+				
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="StoreType">
+		<xs:sequence>
+			<xs:element name="storeId" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="name" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:simpleType name="StatusType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="processing"/>
+			<xs:enumeration value="ordered"/>
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:complexType name="SupplierType">
+		<xs:sequence>
+			<xs:element name="supplierId" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="name" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="StoreOrderIdListType">
+		<xs:sequence>
+			<xs:element name="storeOrderId" type="xs:string" minOccurs="1" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="ItemSupplierOrderType">
+		<xs:sequence>
+			<xs:element name="quantity" type="xs:integer" />
+			<xs:element name="product" type="dbm:ProductType" />
+			<xs:element name="storeOrderIdList" type="dbm:StoreOrderIdListType"/>
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="ItemOrderListType">
+		<xs:sequence>
+			<xs:element name="itemOrder" type="dbm:ItemOrderType" minOccurs="1" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="ItemOrderType">
+		<xs:sequence>
+			<xs:element name="quantity" type="xs:integer" />
+			<xs:element name="product" type="dbm:ProductType" />
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="ItemStoreOrderType">
+		<xs:sequence>
+			<xs:element name="product" type="dbm:ProductStoreType" />
+			<xs:element name="quantity" type="xs:integer" />
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="ProductType">
+		<xs:sequence>
+			<xs:element name="internalId" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="productSupplierId" type="xs:string" />
+			<xs:element name="name" type="xs:string"/>
+			<xs:element name="supplier" type="dbm:SupplierType"/>
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="ProductStoreType">
+		<xs:sequence>
+			<xs:element name="internalId" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="name" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="SupplierOrderResponseType">
+		<xs:sequence>
+			<xs:element name="supplierOrderId" type="xs:string"/>
+			<xs:element name="orderNumber" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+	
+</xs:schema>

@@ -1,0 +1,11 @@
+<tns:newOrder xmlns:tns="http://supplier.com/supplierc/messages/request/v1.0">
+<tns:itens>
+<tns:item>
+        <tns:quantity>800</tns:quantity>
+        <tns:product>
+            <tns:id>5</tns:id>
+            <tns:name>St. Gallen</tns:name>
+        </tns:product>
+    </tns:item>
+</tns:itens>
+</tns:newOrder>

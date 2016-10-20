@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://service.supplierb.supplier.com/"
+	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns5="http://schemas.xmlsoap.org/soap/http"
+	xmlns:ns1="http://supplier.com/wsdl/orderRequest/v1.0/" name="NewOrderImplService"
+	targetNamespace="http://service.supplierb.supplier.com/">
+	<wsdl:import
+		location="newOrderPort.wsdl"
+		namespace="http://supplier.com/wsdl/orderRequest/v1.0/">
+	</wsdl:import>
+	<wsdl:binding name="NewOrderImplServiceSoapBinding" type="ns1:newOrderPort">
+		<soap:binding style="document"
+			transport="http://schemas.xmlsoap.org/soap/http" />
+		<wsdl:operation name="NewOrderOperation">
+			<soap:operation soapAction="" style="document" />
+			<wsdl:input name="NewOrderOperation">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="NewOrderOperationResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="ErrorMessage">
+				<soap:fault name="ErrorMessage" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+	</wsdl:binding>
+	<wsdl:service name="NewOrderImplService">
+		<wsdl:port binding="tns:NewOrderImplServiceSoapBinding"
+			name="NewOrderImplPort">
+			<soap:address location="http://localhost:8080/supplier-b/neworder" />
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>

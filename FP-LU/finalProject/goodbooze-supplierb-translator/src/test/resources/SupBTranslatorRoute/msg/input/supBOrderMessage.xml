@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tns:supplierOrderMsg
+	xmlns:tns="http://goodbooze.com/messages/supplierordermsg/v1.0">
+	<tns:supplierOrder>
+		<tns1:id xmlns:tns1="http://goodbooze.com/types/typesdefinition/v1.0">1</tns1:id>
+		<tns1:status xmlns:tns1="http://goodbooze.com/types/typesdefinition/v1.0">new</tns1:status>
+		<tns1:insertDate xmlns:tns1="http://goodbooze.com/types/typesdefinition/v1.0">2015-06-11
+		</tns1:insertDate>
+		<tns1:supplier xmlns:tns1="http://goodbooze.com/types/typesdefinition/v1.0">
+			<tns1:id>2</tns1:id>
+		</tns1:supplier>
+		<tns1:itemSupplierOrderList
+			xmlns:tns1="http://goodbooze.com/types/typesdefinition/v1.0">
+			<tns1:itemSupplier>
+				<tns1:quantity>10</tns1:quantity>
+				<tns1:product>
+					<tns1:productSupplierId>3</tns1:productSupplierId>
+					<tns1:name>Paulaner</tns1:name>
+				</tns1:product>
+			</tns1:itemSupplier>
+		</tns1:itemSupplierOrderList>
+		<tns1:storeOrderList xmlns:tns1="http://goodbooze.com/types/typesdefinition/v1.0">
+			<tns1:storeOrderId>1</tns1:storeOrderId>
+			<tns1:storeOrderId>2</tns1:storeOrderId>
+		</tns1:storeOrderList>
+	</tns:supplierOrder>
+</tns:supplierOrderMsg>

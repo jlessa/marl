@@ -1,0 +1,61 @@
+<dbe:saveStoreOrderRequest xmlns:dbe="http://gbstore.com.au/messages/dbtranslator/saveStoreOrderRequest/v1.0" xmlns:tp="http://gbstore.com.au/types/dbtranslator/v1.0">
+<dbe:entry>
+<tp:insertDate>2002-05-30T09:00:00</tp:insertDate>
+<tp:processDate>2016-05-30T09:00:00</tp:processDate>
+<tp:storeOrderList>
+         <tp:storeOrder>
+               <tp:storeOrderId></tp:storeOrderId>
+                  <tp:store>
+                     <tp:storeId>1</tp:storeId>
+                     <tp:name>Boteco da Esquina</tp:name>
+                  </tp:store>
+                <tp:itemStoreOrderList>
+
+                  <tp:itemStoreOrder>
+                     <tp:product>
+                        <tp:internalId>1</tp:internalId>
+                        <tp:name>budweiser</tp:name>                    
+                     </tp:product>
+                     <tp:quantity>100</tp:quantity>
+                   </tp:itemStoreOrder>
+
+                   <tp:itemStoreOrder>
+                     <tp:product>
+                        <tp:internalId>2</tp:internalId>
+                     <tp:name>amstel</tp:name>                    
+                       </tp:product>
+                       <tp:quantity>200</tp:quantity>
+                   </tp:itemStoreOrder>
+
+                </tp:itemStoreOrderList>
+         </tp:storeOrder>
+
+         <tp:storeOrder>
+               <tp:storeOrderId></tp:storeOrderId>
+               <tp:store>
+                  <tp:storeId>2</tp:storeId>
+                  <tp:name>Devassa</tp:name>
+               </tp:store>
+
+               <tp:itemStoreOrderList>
+
+                <tp:itemStoreOrder>
+                  <tp:product>
+                     <tp:internalId>1</tp:internalId>
+                  <tp:name>budweiser</tp:name>                    
+                    </tp:product>
+                    <tp:quantity>100</tp:quantity>
+                </tp:itemStoreOrder>
+
+                <tp:itemStoreOrder>
+                  <tp:product>
+                     <tp:internalId>2</tp:internalId>
+                  <tp:name>Amstel</tp:name>                    
+                    </tp:product>
+                    <tp:quantity>200</tp:quantity>
+                </tp:itemStoreOrder>
+                </tp:itemStoreOrderList>
+         </tp:storeOrder>
+         </tp:storeOrderList>
+   </dbe:entry>
+</dbe:saveStoreOrderRequest>

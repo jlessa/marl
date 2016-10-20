@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tns:saveSupplierOrder
+	xmlns:tns="http://goodbooze.com/messages/dbtranslator/SaveSupplierOrder/v1.0"
+	xmlns:tns1="http://goodbooze.com/types/typesdefinition/v1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://goodbooze.com/messages/dbtranslator/SaveSupplierOrder/v1.0 SaveSupplierOrderMsg.xsd ">
+	<tns:supplierOrderList>
+		<tns:supplierOrder>
+			<tns:id>0</tns:id>
+			<tns:status>new</tns:status>
+			<tns:insertDate>2015-05-29</tns:insertDate>
+			<tns:supplierId>1</tns:supplierId>
+			<tns:itemSupplierOrderList>
+				<tns1:itemSupplier>
+					<tns1:id>0</tns1:id>
+					<tns1:quantity>3</tns1:quantity>
+					<tns1:product>
+						<tns1:internalId>1</tns1:internalId>
+						<tns1:name>Heineken</tns1:name>
+						<tns1:productSupplierId>1</tns1:productSupplierId>
+					</tns1:product>
+				</tns1:itemSupplier>
+				<tns1:itemSupplier>
+					<tns1:id>0</tns1:id>
+					<tns1:quantity>2</tns1:quantity>
+					<tns1:product>
+						<tns1:internalId>2</tns1:internalId>
+						<tns1:name>Stella Artois</tns1:name>
+						<tns1:productSupplierId>2</tns1:productSupplierId>
+					</tns1:product>
+				</tns1:itemSupplier>
+			</tns:itemSupplierOrderList>
+			<tns:storeOrderList>
+				<tns:storeOrderId>1</tns:storeOrderId>
+			</tns:storeOrderList>
+		</tns:supplierOrder>
+	</tns:supplierOrderList>
+</tns:saveSupplierOrder>

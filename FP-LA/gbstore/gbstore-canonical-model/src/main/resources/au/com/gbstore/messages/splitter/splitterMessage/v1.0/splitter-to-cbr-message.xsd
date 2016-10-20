@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema 
+        xmlns:xs="http://www.w3.org/2001/XMLSchema"         
+        xmlns:tp="http://gbstore.com.au/types/splitter/v1.0"
+        xmlns:sptm="http://gbstore.com.au/messages/splitter/splitterMessage/v1.0"
+		targetNamespace="http://gbstore.com.au/messages/splitter/splitterMessage/v1.0" 
+		elementFormDefault="qualified">
+		
+	<xs:import namespace="http://gbstore.com.au/types/splitter/v1.0" schemaLocation="../../../../types/splitter/v1.0/SplitterTypes.xsd"/>
+	
+	<xs:element name="splitterOrderToCbr">
+	
+	<xs:complexType>
+		<xs:sequence>
+			<xs:element name="supplierOrder" type="tp:SupplierOrderType"/>
+		</xs:sequence>
+	</xs:complexType>
+	</xs:element>
+	
+</xs:schema>

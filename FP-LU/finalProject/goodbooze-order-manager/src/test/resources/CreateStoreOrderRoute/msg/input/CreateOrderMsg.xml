@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tns:createOrderMsg xmlns:tns="http://goodbooze.com/messages/createordermsg/v1.0" xmlns:tns1="http://goodbooze.com/types/typesdefinition/v1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://goodbooze.com/messages/createordermsg/v1.0 CreateOrderMsg.xsd ">
+  <tns:insertDate>2015-06-09</tns:insertDate>
+  <tns:createOrderList>
+    <tns:orderList>
+      <tns:order>
+        <tns:store>
+          <tns1:id>1</tns1:id>
+          <tns1:name>Store A</tns1:name>
+        </tns:store>
+        <tns:itemList>
+          <tns1:itemStoreOrder>
+            <tns1:quantity>3</tns1:quantity>
+            <tns1:product>
+              <tns1:internalId>1</tns1:internalId>
+              <tns1:name>Heineken</tns1:name>
+            </tns1:product>
+          </tns1:itemStoreOrder>
+		   <tns1:itemStoreOrder>
+            <tns1:quantity>2</tns1:quantity>
+            <tns1:product>
+              <tns1:internalId>2</tns1:internalId>
+              <tns1:name>Stella Artois</tns1:name>
+            </tns1:product>
+          </tns1:itemStoreOrder>
+        </tns:itemList>
+      </tns:order>
+    </tns:orderList>
+  </tns:createOrderList>
+</tns:createOrderMsg>

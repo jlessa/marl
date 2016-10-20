@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FindBugsFilter>
+
+    <!-- Ignore all test classes. -->
+    <!-- <Match>
+        <Class name="~.*Test$"/>
+    </Match>
+    <Match>
+        <Package name="~test\..*"/>
+    </Match> -->
+    
+    <!-- Project specific exclusions; these should only apply to generated code. -->
+    <!-- It is currently not possible to exclude directories using the plugin. -->
+    
+    <!-- avel -->
+    <Match>
+        <Package name="com.client.project.avel.model"/>
+    </Match>
+    <!-- orchestrator -->
+    <Match>
+        <Package name="com.client.project.orchestration.evaluation.model"/>
+    </Match>
+    
+    <!-- General exclusions, often these issues are false positives or 
+         considered too trivial to fix. -->
+    <Match>
+        <Bug pattern="UUF_UNUSED_PUBLIC_OR_PROTECTED_FIELD"/>
+    </Match>
+    <Match>
+        <Bug pattern="EI_EXPOSE_REP"/>
+    </Match>
+    <Match>
+        <Bug pattern="EI_EXPOSE_REP2"/>
+    </Match>
+    <Match>
+        <Bug pattern="UWF_UNWRITTEN_PUBLIC_OR_PROTECTED_FIELD"/>
+    </Match>
+    <Match>
+        <Bug pattern="DM_NUMBER_CTOR"/>
+    </Match>
+    <Match>
+        <Bug pattern="NP_BOOLEAN_RETURN_NULL"/>
+    </Match>
+    <Match>
+        <Bug pattern="UWF_UNWRITTEN_FIELD"/>
+    </Match>
+</FindBugsFilter>

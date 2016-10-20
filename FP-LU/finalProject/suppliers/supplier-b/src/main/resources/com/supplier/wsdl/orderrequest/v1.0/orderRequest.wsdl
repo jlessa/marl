@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+	xmlns:tns="http://supplier.com/wsdl/orderRequest/v1.0/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="orderRequest"
+	xmlns:t="http://supplier.com/types/v1.0/" xmlns:rp="http://supplier.com/messages/response/v1.0/"
+	xmlns:rq="http://supplier.com/messages/request/v1.0/" xmlns:e="http://supplier.com/wsdl/orderRequest/error/v1.0/"
+	targetNamespace="http://supplier.com/wsdl/orderRequest/v1.0/">
+
+	<wsdl:types>
+		<xsd:schema>
+			<xsd:import namespace="http://supplier.com/types/v1.0/"
+				schemaLocation="../../../types/v1.0/Types.xsd" />
+		</xsd:schema>
+
+		<xsd:schema>
+			<xsd:import namespace="http://supplier.com/messages/response/v1.0/"
+				schemaLocation="../../../messages/response/v1.0/NewOrderResponse.xsd" />
+		</xsd:schema>
+
+		<xsd:schema>
+			<xsd:import namespace="http://supplier.com/messages/request/v1.0/"
+				schemaLocation="../../../messages/request/v1.0/NewOrderRequest.xsd" />
+		</xsd:schema>
+
+		<xsd:schema targetNamespace="http://supplier.com/wsdl/orderRequest/error/v1.0/">
+			<xsd:element name="Error">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="message" type="xsd:string" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:schema>
+	</wsdl:types>
+
+	<wsdl:message name="NewOrderRequestMessage">
+		<wsdl:part element="rq:NewOrder" name="newOrderRequest" />
+	</wsdl:message>
+
+	<wsdl:message name="NewOrderResponseMessage">
+		<wsdl:part element="rp:NewOrderResponse" name="newOrderResponse" />
+	</wsdl:message>
+
+	<wsdl:message name="ErrorMessage">
+		<wsdl:part element="e:Error" name="error" />
+	</wsdl:message>
+
+	<wsdl:portType name="newOrderPort">
+		<wsdl:operation name="NewOrderOperation">
+			<wsdl:input message="tns:NewOrderRequestMessage" />
+			<wsdl:output message="tns:NewOrderResponseMessage" />
+			<wsdl:fault name="error" message="tns:ErrorMessage"></wsdl:fault>
+		</wsdl:operation>
+	</wsdl:portType>
+
+	<wsdl:binding name="newOrderRequestSOAP" type="tns:newOrderPort">
+		<soap:binding style="document"
+			transport="http://schemas.xmlsoap.org/soap/http" />
+		<wsdl:operation name="NewOrderOperation">
+			<soap:operation soapAction="" style="document" />
+			<wsdl:input>
+				<soap:body parts="newOrderRequest" use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body parts="newOrderResponse" use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="error">
+				<soap:fault name="error" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+	</wsdl:binding>
+
+	<wsdl:service name="newOrderService">
+		<wsdl:port binding="tns:newOrderRequestSOAP" name="newOrderRequestSOAP">
+			<soap:address location="http://www.localhost:8080/service/newOrderService" />
+		</wsdl:port>
+	</wsdl:service>
+
+</wsdl:definitions>

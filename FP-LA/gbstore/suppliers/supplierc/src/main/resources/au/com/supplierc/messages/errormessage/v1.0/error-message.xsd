@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema 
+        xmlns:xs="http://www.w3.org/2001/XMLSchema"         
+        xmlns:tp="http://supplierc.com.au/types/v1.0"
+		targetNamespace="http://supplierc.com.au/messages/errormessage/v1.0" 
+		elementFormDefault="qualified">
+		
+		<xs:import namespace="http://supplierc.com.au/types/v1.0" schemaLocation="../../../types/v1.0/SupCTypes.xsd"/>
+		
+		<xs:element name="supplierCErrorMessage">
+			<xs:complexType>
+				<xs:sequence>
+					<xs:element name="errorMessage" type="tp:ErrorMessageType"/>
+				</xs:sequence>
+			</xs:complexType>
+		</xs:element>
+</xs:schema>

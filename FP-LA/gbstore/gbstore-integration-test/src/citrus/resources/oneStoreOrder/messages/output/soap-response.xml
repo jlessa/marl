@@ -1,0 +1,3 @@
+      <storeOrderResponse xmlns="http://gbstore.com.au/messages/legacysystem/storeOrderResponse/v1.0">
+         <message>Your request has been received</message>
+      </storeOrderResponse>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://goodbooze.com/messages/supplierorderrequestmsg/v1.0" 
+		xmlns:tns="http://goodbooze.com/messages/supplierorderrequestmsg/v1.0"
+		xmlns:td="http://goodbooze.com/types/typesdefinition/v1.0" 
+		elementFormDefault="qualified">
+		
+		<xs:import namespace="http://goodbooze.com/types/typesdefinition/v1.0" schemaLocation="../../../types/typesdefinition/v1.0/TypesDefinition.xsd"/>
+		
+		<xs:element name="supplierOrderRequestMsg">
+			<xs:complexType>
+				<xs:sequence>
+					<xs:element name="supplierOrderList" type="tns:supplierOrderList" />
+				</xs:sequence>
+			</xs:complexType>		
+		</xs:element>
+		
+		<xs:complexType name="supplierOrderList">
+			<xs:sequence>
+					<xs:element name="supplierOrder" type="td:supplierOrder" minOccurs="1" maxOccurs="3"/>
+				</xs:sequence>
+		</xs:complexType>
+</xs:schema>

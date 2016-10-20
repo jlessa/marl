@@ -1,0 +1,40 @@
+<xs:schema 
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:tp="http://supplierc.com.au/types/v1.0"
+	targetNamespace="http://supplierc.com.au/types/v1.0"
+	elementFormDefault="qualified">
+	
+	<xs:complexType name="SupplierOrderRequestType">
+		<xs:sequence>
+			<xs:element name="supplierOrderId" type="xs:integer" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="itemSupplierOrderList" type="tp:ItemSupplierOrderListType"/>
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="SupplierOrderResponseType">
+		<xs:sequence>
+			<xs:element name="supplierOrderId" type="xs:integer" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="orderNumber" type="xs:integer" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="ItemSupplierOrderListType">
+		<xs:sequence>
+			<xs:element name="itemOrder" type="tp:ItemSupplierOrderType" minOccurs="1" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="ItemSupplierOrderType">
+		<xs:sequence>
+			<xs:element name="quantity" type="xs:integer" />
+			<xs:element name="productId" type="xs:string" minOccurs="1" maxOccurs="1" />
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="ErrorMessageType">
+		<xs:sequence>
+			<xs:element name="faultCode" type="xs:string"/>
+			<xs:element name="faultString" type="xs:string" />
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

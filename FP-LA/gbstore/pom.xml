@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>au.com.gbstore</groupId>
+	<artifactId>gbstore</artifactId>
+	<version>1.0.0</version>
+	<packaging>pom</packaging>
+	<modules>
+		<module>gbstore-canonical-model</module>
+		<module>gbstore-features</module>
+		<module>gbstore-soap-adapter</module>
+		<module>gbstore-order-manager</module>
+		<module>gbstore-splitter</module>
+		<module>gbstore-cbr</module>
+		<module>gbstore-mysql-ds</module>
+		<module>gbstore-db-translator</module>
+ 		<module>gbstore-suppliera-translator</module>
+		<module>gbstore-supplierb-translator</module>
+		<module>gbstore-supplierc-translator</module>
+		<module>suppliers/persistence-module</module>
+		<module>suppliers/suppliera</module>
+		<module>suppliers/supplierb</module>
+		<module>suppliers/supplierc</module>
+	</modules>
+</project>

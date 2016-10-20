@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+	xmlns="http://goodbooze.com/wsdl/createorder/v1" xmlns:co="http://goodbooze.com/messages/createordermsg/v1.0"
+	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	name="createOrder" targetNamespace="http://goodbooze.com/wsdl/createorder/v1">
+	<wsdl:types>
+		<xsd:schema>
+			<xsd:import namespace="http://goodbooze.com/messages/createordermsg/v1.0"
+				schemaLocation="../../../messages/createordermsg/v1.0/CreateOrderMsg.xsd" />
+		</xsd:schema>
+		<xsd:schema targetNamespace="http://goodbooze.com/wsdl/createorder/v1">
+			<xsd:element name="createOrderResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="response" type="xsd:string" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:schema>
+		<xsd:schema targetNamespace="http://goodbooze.com/wsdl/createorder/v1">
+			<xsd:element name="error">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="reason" type="xsd:string"
+							minOccurs="0" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:schema>
+	</wsdl:types>
+
+	<wsdl:message name="CreateOrderRequestMessage">
+		<wsdl:part element="co:createOrderMsg" name="createOrderMsg" />
+	</wsdl:message>
+
+	<wsdl:message name="CreateOrderResponseMessage">
+		<wsdl:part element="createOrderResponse" name="createOrderResponse" />
+	</wsdl:message>
+
+	<wsdl:message name="ErrorMessage">
+		<wsdl:part element="error" name="error" />
+	</wsdl:message>
+
+	<wsdl:portType name="createOrderPort">
+		<wsdl:operation name="createOrderOperation">
+			<wsdl:input message="CreateOrderRequestMessage" />
+			<wsdl:output message="CreateOrderResponseMessage" />
+			<wsdl:fault name="error" message="ErrorMessage" />
+		</wsdl:operation>
+	</wsdl:portType>
+
+	<wsdl:binding name="createOrderSOAPBinding" type="createOrderPort">
+		<soap:binding style="document"
+			transport="http://schemas.xmlsoap.org/soap/http" />
+		<wsdl:operation name="createOrderOperation">
+			<soap:operation soapAction="" style="document" />
+			<wsdl:input>
+				<soap:body parts="createOrderMsg" use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body parts="createOrderResponse" use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="error">
+				<soap:fault name="error" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+	</wsdl:binding>
+
+	<wsdl:service name="createOrderService">
+		<wsdl:port binding="createOrderSOAPBinding" name="createOrderPort">
+			<soap:address location="/services/createOrder" />
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>

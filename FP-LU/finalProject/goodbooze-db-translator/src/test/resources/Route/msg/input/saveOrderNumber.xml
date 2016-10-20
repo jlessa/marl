@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tns:updateOrderNumber xmlns:tns="http://goodbooze.com/messages/dbtranslator/saveordernumbermsg/v1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://goodbooze.com/messages/dbtranslator/saveordernumbermsg/v1.0 SaveOrderNumberMsg.xsd ">
+  <tns:orderNumber>1</tns:orderNumber>
+  <tns:supplierOrderId>1</tns:supplierOrderId>
+</tns:updateOrderNumber>

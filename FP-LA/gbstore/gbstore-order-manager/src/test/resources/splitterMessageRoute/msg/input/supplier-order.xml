@@ -1,0 +1,76 @@
+<sso:saveSupplierOrderReply xmlns:sso="http://gbstore.com.au/messages/dbtranslator/saveSupplierOrdersReply/v1.0" xmlns:tp="http://gbstore.com.au/types/dbtranslator/v1.0">
+   
+        <sso:supplierOrder>  
+       
+           <tp:supplier>
+              <tp:supplierId>1</tp:supplierId>
+              <tp:name/>
+           </tp:supplier>      
+             
+             
+           <tp:itemSupplierOrderList>
+               <tp:itemSupplierOrder> 
+                           <tp:quantity>100</tp:quantity> 
+                           <tp:product>
+                              <tp:productSupplierId>1</tp:productSupplierId>
+                              <tp:name>bud</tp:name>
+                           </tp:product>
+               
+               <tp:storeOrderIdList>
+                <tp:storeOrderId>1234</tp:storeOrderId>
+               </tp:storeOrderIdList>
+                           
+                           
+                    </tp:itemSupplierOrder>
+               
+           </tp:itemSupplierOrderList>
+         </sso:supplierOrder><sso:supplierOrder>  
+       
+           <tp:supplier>
+              <tp:supplierId>2</tp:supplierId>
+              <tp:name/>
+           </tp:supplier>      
+             
+             
+           <tp:itemSupplierOrderList>
+               <tp:itemSupplierOrder> 
+                           <tp:quantity>215</tp:quantity> 
+                           <tp:product>
+                              <tp:productSupplierId>2</tp:productSupplierId>
+                              <tp:name>amstel</tp:name>
+                           </tp:product>
+               
+               <tp:storeOrderIdList>
+                <tp:storeOrderId>1234</tp:storeOrderId><tp:storeOrderId>1234</tp:storeOrderId>
+               </tp:storeOrderIdList>
+                           
+                           
+                    </tp:itemSupplierOrder>
+               
+           </tp:itemSupplierOrderList>
+         </sso:supplierOrder><sso:supplierOrder>  
+       
+           <tp:supplier>
+              <tp:supplierId>3</tp:supplierId>
+              <tp:name/>
+           </tp:supplier>      
+             
+             
+           <tp:itemSupplierOrderList>
+               <tp:itemSupplierOrder> 
+                           <tp:quantity>300</tp:quantity> 
+                           <tp:product>
+                              <tp:productSupplierId>3</tp:productSupplierId>
+                              <tp:name>original</tp:name>
+                           </tp:product>
+               
+               <tp:storeOrderIdList>
+                <tp:storeOrderId>1234</tp:storeOrderId>
+               </tp:storeOrderIdList>
+                           
+                           
+                    </tp:itemSupplierOrder>
+               
+           </tp:itemSupplierOrderList>
+         </sso:supplierOrder>
+</sso:saveSupplierOrderReply>

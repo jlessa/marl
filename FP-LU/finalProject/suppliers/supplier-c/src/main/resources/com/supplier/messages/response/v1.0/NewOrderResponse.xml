@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tns:response xmlns:tns="http://supplier.com/supplierc/messages/response/v1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://supplier.com/supplierc/messages/response/v1.0 NewOrderResponse.xsd ">
+  <tns:orderNumber>0</tns:orderNumber>
+</tns:response>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tns:supplierResponse
+	xmlns:tns="http://goodbooze.com/messages/dbtranslator/supplierresponsemsg/v1.0"
+	xmlns:tns1="http://goodbooze.com/types/typesdefinition/v1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://goodbooze.com/messages/dbtranslator/supplierresponsemsg/v1.0 SuppliersResponseMsg.xsd ">
+	<tns:productSupplierList>
+		<tns:productSupplier>
+			<tns:productId>1</tns:productId>
+			<tns:supplier>
+				<tns1:id>1</tns1:id>
+				<tns1:name>Supplier A</tns1:name>
+			</tns:supplier>
+		</tns:productSupplier>
+
+		<tns:productSupplier>
+			<tns:productId>2</tns:productId>
+			<tns:supplier>
+				<tns1:id>1</tns1:id>
+				<tns1:name>Supplier A</tns1:name>
+			</tns:supplier>
+		</tns:productSupplier>
+
+	</tns:productSupplierList>
+</tns:supplierResponse>

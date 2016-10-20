@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema 
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:spr="http://gbstore.com.au/types/ordermanager/v1.0"
+	targetNamespace="http://gbstore.com.au/types/ordermanager/v1.0"
+	elementFormDefault="qualified">
+	
+	<xs:complexType name="SupplierOrderType">
+		<xs:sequence>
+			<xs:element name="supplierOrderId" type="xs:string"/>
+			<xs:element name="supplier" type="spr:SupplierType"/>
+			<xs:element name="itemSupplierOrderList">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="itemSupplierOrder" type="spr:ItemSupplierOrderType"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+		
+	</xs:complexType>
+	
+	<xs:complexType name="ItemSupplierOrderType">
+		<xs:sequence>
+			<xs:element name="quantity" type="xs:integer" />
+			<xs:element name="product" type="spr:ProductSupplierType" />
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:simpleType name="StatusType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="processing"/>
+			<xs:enumeration value="ordered"/>
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:complexType name="ProductSupplierType">
+		<xs:sequence>
+			<xs:element name="productSupplierId" type="xs:string" />
+			<xs:element name="name" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="SupplierOrderResponseType">
+		<xs:sequence>
+			<xs:element name="supplierOrderId" type="xs:string"/>
+			<xs:element name="orderNumber" type="xs:string"/>
+			<xs:element name="updateDate" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="SupplierType">
+		<xs:sequence>
+			<xs:element name="supplierId" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="name" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+	
+</xs:schema>

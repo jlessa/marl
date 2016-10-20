@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tns:saveStoreOrder xmlns:tns="http://goodbooze.com/messages/dbtranslator/savestoreordermsg/v1.0" 
+xmlns:tns1="http://goodbooze.com/types/typesdefinition/v1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://goodbooze.com/messages/dbtranslator/savestoreordermsg/v1.0 SaveStoreOrderMsg.xsd ">
+  <tns:storeOrderList>
+    <tns1:storeOrder>
+      <tns1:id>1</tns1:id>
+      <tns1:status>new</tns1:status>
+      <tns1:insertDate>2015-05-25</tns1:insertDate>
+      <tns1:itemStoreOrderList>
+        <tns1:itemStoreOrder>
+          <tns1:id>0</tns1:id>
+          <tns1:quantity>2</tns1:quantity>
+          <tns1:product>
+            <tns1:internalId>1</tns1:internalId>
+            <tns1:name>Heineken</tns1:name>
+            <tns1:productSupplierId>1</tns1:productSupplierId>
+          </tns1:product>
+        </tns1:itemStoreOrder>
+		<tns1:itemStoreOrder>
+          <tns1:id>0</tns1:id>
+          <tns1:quantity>3</tns1:quantity>
+          <tns1:product>
+            <tns1:internalId>2</tns1:internalId>
+            <tns1:name>Stella Artois</tns1:name>
+            <tns1:productSupplierId>1</tns1:productSupplierId>
+          </tns1:product>
+        </tns1:itemStoreOrder>
+      </tns1:itemStoreOrderList>
+      <tns1:store>
+        <tns1:id>1</tns1:id>
+        <tns1:name>Store A</tns1:name>
+      </tns1:store>
+    </tns1:storeOrder>
+	
+    <tns1:storeOrder>
+      <tns1:id>2</tns1:id>
+      <tns1:status>new</tns1:status>
+      <tns1:insertDate>2015-05-25</tns1:insertDate>
+      <tns1:itemStoreOrderList>
+        <tns1:itemStoreOrder>
+          <tns1:id>0</tns1:id>
+          <tns1:quantity>2</tns1:quantity>
+          <tns1:product>
+            <tns1:internalId>4</tns1:internalId>
+            <tns1:name>Therezopolis</tns1:name>
+            <tns1:productSupplierId>3</tns1:productSupplierId>
+          </tns1:product>
+        </tns1:itemStoreOrder>
+		<tns1:itemStoreOrder>
+          <tns1:id>0</tns1:id>
+          <tns1:quantity>6</tns1:quantity>
+          <tns1:product>
+            <tns1:internalId>2</tns1:internalId>
+            <tns1:name>Stella Artois</tns1:name>
+            <tns1:productSupplierId>1</tns1:productSupplierId>
+          </tns1:product>
+        </tns1:itemStoreOrder>
+		<tns1:itemStoreOrder>
+          <tns1:id>0</tns1:id>
+          <tns1:quantity>2</tns1:quantity>
+          <tns1:product>
+            <tns1:internalId>1</tns1:internalId>
+            <tns1:name>Heineken</tns1:name>
+            <tns1:productSupplierId>1</tns1:productSupplierId>
+          </tns1:product>
+        </tns1:itemStoreOrder>
+      </tns1:itemStoreOrderList>
+      <tns1:store>
+        <tns1:id>2</tns1:id>
+        <tns1:name>Store B</tns1:name>
+      </tns1:store>
+    </tns1:storeOrder>
+  </tns:storeOrderList>
+</tns:saveStoreOrder>

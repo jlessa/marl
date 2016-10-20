@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ns4:createOrderResponse
+	xmlns:ns2="http://goodbooze.com/types/typesdefinition/v1.0" xmlns:ns3="http://goodbooze.com/messages/createordermsg/v1.0"
+	xmlns:ns4="http://goodbooze.com/wsdl/createorder/v1">
+	<response>Request Received with sucess</response>
+</ns4:createOrderResponse>

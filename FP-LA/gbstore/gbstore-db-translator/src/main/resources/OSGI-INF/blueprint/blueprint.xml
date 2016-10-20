@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<blueprint xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0"
+ xmlns:cm="http://aries.apache.org/blueprint/xmlns/blueprint-cm/v1.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:camel="http://camel.apache.org/schema/blueprint"
+	xsi:schemaLocation="
+       http://www.osgi.org/xmlns/blueprint/v1.0.0 http://www.osgi.org/xmlns/blueprint/v1.0.0/blueprint.xsd
+       http://camel.apache.org/schema/blueprint http://camel.apache.org/schema/blueprint/camel-blueprint.xsd">
+
+	<cm:property-placeholder id="properties" persistent-id="au.com.gbstore.dbtranslator" />
+ 
+   <bean id="saveentryroute" class="au.com.gbstore.dbtranslator.route.SaveEntryRoute"/>
+   <bean id="enrichmentroute" class="au.com.gbstore.dbtranslator.route.EnrichmentRoute"/>
+   <bean id="savesupplierroute" class="au.com.gbstore.dbtranslator.route.SaveSupplierOrderRoute"/>
+   <bean id="saveordernumberroute" class="au.com.gbstore.dbtranslator.route.SaveOrderNumberRoute"/>
+	   
+	<bean id="activemq" class="org.apache.activemq.camel.component.ActiveMQComponent">
+		<property name="brokerURL" value="${brokerURL}" />
+		<property name="userName" value="${userName}" />
+		<property name="password" value="${password}" />
+	</bean>
+	
+	<camelContext id="dbTranslatorContext" xmlns="http://camel.apache.org/schema/blueprint">
+ 		<routeBuilder ref="saveentryroute"/>
+ 		<routeBuilder ref="enrichmentroute"/>
+ 		<routeBuilder ref="savesupplierroute"/>
+ 		<routeBuilder ref="saveordernumberroute"/>
+	</camelContext>
+
+</blueprint>

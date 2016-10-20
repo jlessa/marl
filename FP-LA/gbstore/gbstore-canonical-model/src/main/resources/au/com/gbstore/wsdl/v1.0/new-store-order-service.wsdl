@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<wsdl:definitions
+	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+	xmlns:tns="http://gbstore.com.au/wsdl/v1"
+	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+  	xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:rqt="http://gbstore.com.au/messages/legacysystem/storeOrderRequest/v1.0"
+	xmlns:rsp="http://gbstore.com.au/messages/legacysystem/storeOrderResponse/v1.0"
+	xmlns:err="http://gbstore.com.au/messages/legacysystem/errorMessage/v1.0"
+	targetNamespace="http://gbstore.com.au/wsdl/v1">
+  
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://gbstore.com.au/wsdl/v1">
+      
+      <xs:import namespace="http://gbstore.com.au/messages/legacysystem/storeOrderRequest/v1.0" schemaLocation="../../messages/legacysystem/storeOrderRequest/v1.0/store-order-request.xsd"/>
+      <xs:import namespace="http://gbstore.com.au/messages/legacysystem/storeOrderResponse/v1.0" schemaLocation="../../messages/legacysystem/storeOrderResponse/v1.0/store-order-response.xsd"/>
+      <xs:import namespace="http://gbstore.com.au/messages/legacysystem/errorMessage/v1.0" schemaLocation="../../messages/legacysystem/errorMessage/v1.0/error-message.xsd"/>
+    
+    </xsd:schema>
+  </wsdl:types>
+  
+  <wsdl:message name="OrderRequest">
+    <wsdl:part element="rqt:storeOrderRequest" name="parameters"/>
+  </wsdl:message>
+  
+  <wsdl:message name="OrderResponse">
+    <wsdl:part element="rsp:storeOrderResponse" name="parameters"/>
+  </wsdl:message>
+  
+  <wsdl:message name="ErrorMessage">
+    <wsdl:part element="err:Error" name="error" />
+  </wsdl:message>
+
+  <wsdl:portType name="NewOrderWS">
+    <wsdl:operation name="NewOrder">
+      <wsdl:input message="tns:OrderRequest" name="OrderRequest"/>
+      <wsdl:output message="tns:OrderResponse" name="OrderResponse"/>
+      <wsdl:fault message="tns:ErrorMessage" name="ErrorMessage" ></wsdl:fault>
+    </wsdl:operation>
+  </wsdl:portType>
+  
+  <wsdl:binding name="NewOrderSOAPBinding" type="tns:NewOrderWS">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="NewOrder">
+      <soap:operation soapAction="NewOrder"/>
+      <wsdl:input name="OrderRequest">
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:input>
+     <wsdl:output name="OrderResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+     	<wsdl:fault name="ErrorMessage">
+			<soap:fault name="ErrorMessage" use="literal" />
+			</wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  
+  <wsdl:service name="NewOrderService">
+    <wsdl:port binding="tns:NewOrderSOAPBinding" name="NewOrderPort">
+      <soap:address location="/services/NewOrder"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

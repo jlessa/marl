@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dbr:saveStoreOrderReply xmlns:dbr="http://gbstore.com.au/messages/dbtranslator/saveStoreOrderReply/v1.0" xmlns:tp="http://gbstore.com.au/types/dbtranslator/v1.0">
+   <dbr:entry>
+            <tp:entryId>1234</tp:entryId>
+            <tp:insertDate>2002-05-30T09:00:00</tp:insertDate>
+            <tp:processDate>null</tp:processDate>
+            <tp:storeOrderList>
+               <tp:storeOrder>
+                  <tp:storeOrderId>1234</tp:storeOrderId>
+                  <tp:store>
+                     <tp:storeId>1111</tp:storeId>
+                     <tp:name>Boteco da Esquina</tp:name>
+                  </tp:store>
+                  <tp:status>processing</tp:status>
+                  <tp:insertDate>2016-02-03T16:52:07.658Z</tp:insertDate>
+                  <tp:updateDate>null</tp:updateDate>
+                  <tp:itemStoreOrderList>
+                  <tp:itemStoreOrder>
+                     <tp:itemStoreOrderId>1234</tp:itemStoreOrderId>
+                     <tp:product>
+                        <tp:internalId>1</tp:internalId>
+                        <tp:name>bud</tp:name>
+                     </tp:product>
+                     <tp:quantity>100</tp:quantity>
+                  </tp:itemStoreOrder>
+                  <tp:itemStoreOrder>
+                     <tp:itemStoreOrderId>1234</tp:itemStoreOrderId>
+                     <tp:product>
+                        <tp:internalId>2</tp:internalId>
+                        <tp:name>amstel</tp:name>
+                     </tp:product>
+                     <tp:quantity>200</tp:quantity>
+                  </tp:itemStoreOrder>
+                  <tp:itemStoreOrder>
+                     <tp:itemStoreOrderId>1234</tp:itemStoreOrderId>
+                     <tp:product>
+                        <tp:internalId>3</tp:internalId>
+                        <tp:name>original</tp:name>
+                     </tp:product>
+                     <tp:quantity>300</tp:quantity>
+                  </tp:itemStoreOrder>
+                  </tp:itemStoreOrderList>
+               </tp:storeOrder>
+               <tp:storeOrder>
+                  <tp:storeOrderId>1234</tp:storeOrderId>
+                  <tp:store>
+                     <tp:storeId>2222</tp:storeId>
+                     <tp:name>Bar da Boa</tp:name>
+                  </tp:store>
+                  <tp:status>processing</tp:status>
+                  <tp:insertDate>2016-02-03T16:52:07.658Z</tp:insertDate>
+                  <tp:updateDate>null</tp:updateDate>
+                  <tp:itemStoreOrderList>
+                  <tp:itemStoreOrder>
+                     <tp:itemStoreOrderId>1234</tp:itemStoreOrderId>
+                     <tp:product>
+                        <tp:internalId>2</tp:internalId>
+                        <tp:name>amstel</tp:name>
+                     </tp:product>
+                     <tp:quantity>15</tp:quantity>
+                     </tp:itemStoreOrder>
+                  </tp:itemStoreOrderList>
+               </tp:storeOrder>
+            </tp:storeOrderList>
+         </dbr:entry>
+</dbr:saveStoreOrderReply>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://goodbooze.com/messages/dbtranslator/SaveSupplierOrder/v1.0"
+	xmlns:tns="http://goodbooze.com/messages/dbtranslator/SaveSupplierOrder/v1.0"
+	xmlns:td="http://goodbooze.com/types/typesdefinition/v1.0"
+	elementFormDefault="qualified">
+
+	<xs:import namespace="http://goodbooze.com/types/typesdefinition/v1.0"
+		schemaLocation="../../../../types/typesdefinition/v1.0/TypesDefinition.xsd" />
+
+	<xs:element name="saveSupplierOrder">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="supplierOrderList" type="tns:supplierOrderList" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:complexType name="supplierOrderList">
+		<xs:sequence>
+			<xs:element name="supplierOrder" type="tns:supplierOrder" minOccurs="1" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+
+
+	<xs:complexType name="supplierOrder">
+		<xs:sequence>
+			<xs:element name="id" type="xs:int" />
+			<xs:element name="status" type="xs:string" />
+			<xs:element name="insertDate" type="xs:date" />
+			<xs:element name="supplierId" type="xs:int" />
+			<xs:element name="itemSupplierOrderList" type="td:itemSupplierOrderList" minOccurs="1"/>
+			<xs:element name="storeOrderList" type="tns:storeOrderList" />
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="storeOrderList">
+		<xs:sequence>
+			<xs:element name="storeOrderId" type="xs:int" minOccurs="1" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

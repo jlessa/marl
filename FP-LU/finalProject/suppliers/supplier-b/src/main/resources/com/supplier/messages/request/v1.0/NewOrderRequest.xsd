@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+			targetNamespace="http://supplier.com/messages/request/v1.0/" 
+			xmlns:tns="http://supplier.com/messages/request/v1.0/"
+			xmlns:t="http://supplier.com/types/v1.0/"
+			elementFormDefault="qualified">
+
+	<xsd:import namespace="http://supplier.com/types/v1.0/" schemaLocation="../../../types/v1.0/Types.xsd" />
+	
+	<xsd:element name="NewOrder">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="itemList" type="t:ItemList" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+</xsd:schema>

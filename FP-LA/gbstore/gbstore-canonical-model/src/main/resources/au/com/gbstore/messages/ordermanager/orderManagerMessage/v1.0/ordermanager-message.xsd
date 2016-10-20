@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema 
+        xmlns:xs="http://www.w3.org/2001/XMLSchema"
+        xmlns:tp="http://gbstore.com.au/types/ordermanager/v1.0"  
+        xmlns:om="http://gbstore.com.au/messages/ordermanager/orderManagerMessage/v1.0"       
+		targetNamespace="http://gbstore.com.au/messages/ordermanager/orderManagerMessage/v1.0" 
+		elementFormDefault="qualified">
+		
+		<xs:import namespace="http://gbstore.com.au/types/ordermanager/v1.0" schemaLocation="../../../../types/ordermanager/v1.0/OrderManagerTypes.xsd"/>
+		
+		<xs:element name="splitterSupplierMessage">
+		
+			<xs:complexType>
+				<xs:sequence>
+					<xs:element name="supplierOrder" type="tp:SupplierOrderType" minOccurs="1" maxOccurs="3"/>
+				</xs:sequence>
+			</xs:complexType>
+		</xs:element>
+		
+</xs:schema>

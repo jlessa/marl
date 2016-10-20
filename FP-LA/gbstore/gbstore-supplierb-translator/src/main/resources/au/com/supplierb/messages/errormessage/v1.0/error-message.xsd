@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema 
+        xmlns:xs="http://www.w3.org/2001/XMLSchema"         
+        xmlns:tp="http://supplierb.com.au/types/v1.0"
+		targetNamespace="http://supplierb.com.au/messages/errormessage/v1.0" 
+		elementFormDefault="qualified">
+		
+		<xs:import namespace="http://supplierb.com.au/types/v1.0" schemaLocation="../../../types/v1.0/SupBTypes.xsd"/>
+		
+		<xs:element name="errorMessage" type="tp:ErrorMessageType"/>
+</xs:schema>

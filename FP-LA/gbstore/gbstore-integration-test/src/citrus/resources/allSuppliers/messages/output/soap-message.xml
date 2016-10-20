@@ -1,0 +1,13 @@
+<ns3:supplierBMessage
+	xmlns:ns3="http://supplierb.com.au/messages/orderrequest/v1.0"
+	xmlns:ns3t="http://supplierb.com.au/types/v1.0">
+	<ns3:supplierOrderRequest>
+		<ns3t:supplierOrderId>@ignore@</ns3t:supplierOrderId>
+		<ns3t:itemSupplierOrderList>
+			<ns3t:itemOrder>
+				<ns3t:quantity>900</ns3t:quantity>
+				<ns3t:productId>2</ns3t:productId>
+			</ns3t:itemOrder>
+		</ns3t:itemSupplierOrderList>
+	</ns3:supplierOrderRequest>
+</ns3:supplierBMessage>

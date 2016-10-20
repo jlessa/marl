@@ -1,0 +1,30 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="http://gbstore.com.au/messages/legacysystem/storeOrderRequest/v1.0" xmlns:v11="http://gbstore.com.au/types/legacysystem/v1.0">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <v1:storeOrderRequest>
+         <v1:entry>
+            <v11:insertDate>2002-05-30T09:00:00</v11:insertDate>
+            <v11:processDate>null</v11:processDate>
+            <v11:storeOrderList>
+               <!--1 or more repetitions:-->
+               <v11:storeOrder>
+                  <v11:store>
+                     <v11:storeId>1111</v11:storeId>
+                     <v11:name>Boteco da Esquina</v11:name>
+                  </v11:store>
+                  <!--1 or more repetitions:-->
+                  <v11:itemStoreOrderList>
+                  	<v11:itemStoreOrder>
+                      <v11:product>
+                         <v11:internalId>1</v11:internalId>
+                         <v11:name>bud</v11:name>
+                      </v11:product>
+                      <v11:quantity>10</v11:quantity>
+                     </v11:itemStoreOrder>
+                  </v11:itemStoreOrderList>
+               </v11:storeOrder>
+            </v11:storeOrderList>
+         </v1:entry>
+      </v1:storeOrderRequest>
+   </soapenv:Body>
+</soapenv:Envelope>

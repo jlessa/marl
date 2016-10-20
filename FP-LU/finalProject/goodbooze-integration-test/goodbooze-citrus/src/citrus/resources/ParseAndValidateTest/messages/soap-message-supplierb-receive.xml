@@ -1,0 +1,11 @@
+<tns:NewOrder xmlns:tns="http://supplier.com/messages/request/v1.0/">
+	<tns:itemList>
+		<tns:item>
+			<tns:quantity>200</tns:quantity>
+			<tns:product>
+				<tns:id>3</tns:id>
+				<tns:name>Paulaner</tns:name>
+			</tns:product>
+		</tns:item>
+	</tns:itemList>
+</tns:NewOrder>

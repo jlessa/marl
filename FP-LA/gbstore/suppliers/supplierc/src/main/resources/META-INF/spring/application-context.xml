@@ -1,0 +1,32 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:jms="http://www.springframework.org/schema/jms"
+	xsi:schemaLocation=" http://www.springframework.org/schema/beans 
+       http://www.springframework.org/schema/beans/spring-beans.xsd 
+       http://www.springframework.org/schema/context
+    	http://www.springframework.org/schema/context/spring-context.xsd
+   	 http://www.springframework.org/schema/jms
+    http://www.springframework.org/schema/jms/spring-jms.xsd">
+
+
+	<bean id="amqConnectionFactory" class="org.apache.activemq.ActiveMQConnectionFactory">
+		<constructor-arg index="0" value="tcp://localhost:6167" />
+	</bean>
+
+	<bean id="connectionFactory"
+		class="org.springframework.jms.connection.CachingConnectionFactory">
+		<constructor-arg ref="amqConnectionFactory" />
+	</bean>
+	
+	<bean id="supplierOrderListener" class="au.com.supplierc.service.SupplierOrderListener"/>
+	
+	<bean id="messageListenerAdapter" class="org.springframework.jms.listener.adapter.MessageListenerAdapter">
+	    <constructor-arg ref="supplierOrderListener" />
+	  </bean>
+
+	 <bean id ="messageListenerContainer" class="org.springframework.jms.listener.DefaultMessageListenerContainer">
+        <property name="connectionFactory" ref="connectionFactory" />
+        <property name="destinationName" value="supplierC.sendOrderRequest" />
+        <property name="messageListener" ref="messageListenerAdapter" />
+    </bean>
+
+</beans>

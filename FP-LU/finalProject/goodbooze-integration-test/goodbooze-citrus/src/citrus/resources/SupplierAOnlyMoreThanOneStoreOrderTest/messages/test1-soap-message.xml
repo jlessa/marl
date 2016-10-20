@@ -1,0 +1,71 @@
+<!-- 3 StoreOrder with only SuppplierA products -->
+<v1:createOrderMsg xmlns:v1="http://goodbooze.com/messages/createordermsg/v1.0" xmlns:v11="http://goodbooze.com/types/typesdefinition/v1.0">
+	<v1:createOrderList>
+		<v1:orderList>
+		
+			<v1:order>
+				<v1:store>
+					<v11:id>2</v11:id>
+					<v11:name>Store B</v11:name>
+				</v1:store>
+				
+				<v1:itemList>
+					<v11:itemStoreOrder>
+						<v11:quantity>100</v11:quantity>
+						<v11:product>
+							<v11:internalId>1</v11:internalId>
+							<v11:name>Heineken</v11:name>
+						</v11:product>
+					</v11:itemStoreOrder>
+				</v1:itemList>			
+			</v1:order>
+			
+			<v1:order>
+                <v1:store>
+                    <v11:id>2</v11:id>
+                    <v11:name>Store B</v11:name>
+                </v1:store>
+                <v1:itemList>
+                    <v11:itemStoreOrder>
+                        <v11:quantity>500</v11:quantity>
+                        <v11:product>
+                            <v11:internalId>6</v11:internalId>
+                            <v11:name>Leffe</v11:name>
+                        </v11:product>
+                    </v11:itemStoreOrder>
+                    <v11:itemStoreOrder>
+                        <v11:quantity>700</v11:quantity>
+                        <v11:product>
+                            <v11:internalId>2</v11:internalId>
+                            <v11:name>Stella Artois</v11:name>
+                        </v11:product>
+                    </v11:itemStoreOrder>            
+                </v1:itemList>    
+            </v1:order>
+            
+            <v1:order>
+                <v1:store>
+                    <v11:id>2</v11:id>
+                    <v11:name>Store B</v11:name>
+                </v1:store>  
+                <v1:itemList>
+                    <v11:itemStoreOrder>
+                        <v11:quantity>300</v11:quantity>
+                        <v11:product>
+                            <v11:internalId>1</v11:internalId>
+                            <v11:name>Heineken</v11:name>
+                        </v11:product>
+                    </v11:itemStoreOrder>
+                    <v11:itemStoreOrder>
+                        <v11:quantity>600</v11:quantity>
+                        <v11:product>
+                            <v11:internalId>2</v11:internalId>
+                            <v11:name>Stella Artois</v11:name>
+                        </v11:product>
+                    </v11:itemStoreOrder>
+                </v1:itemList>   
+            </v1:order>
+			
+		</v1:orderList>
+	</v1:createOrderList>
+</v1:createOrderMsg>

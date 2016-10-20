@@ -1,0 +1,15 @@
+<stc:splitterOrderToCbr xmlns:stc="http://gbstore.com.au/messages/splitter/splitterMessage/v1.0" xmlns:tp="http://gbstore.com.au/types/splitter/v1.0">
+<stc:supplierOrder>
+<tp:supplierId>a</tp:supplierId>
+<tp:supplierOrderId>00001</tp:supplierOrderId>
+    <tp:itemSupplierOrderList>
+    <tp:itemSupplierOrder>
+        <tp:quantity>100</tp:quantity>
+        <tp:product>
+          <tp:productSupplierId>1</tp:productSupplierId>
+          <tp:name>bud</tp:name>
+        </tp:product>
+      </tp:itemSupplierOrder>
+    </tp:itemSupplierOrderList>
+</stc:supplierOrder>
+</stc:splitterOrderToCbr>

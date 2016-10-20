@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<features name="gbstore-features-${project.version}"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://karaf.apache.org/xmlns/features/v1.0.0"
+    xsi:schemaLocation="http://karaf.apache.org/xmlns/features/v1.0.0 http://karaf.apache.org/xmlns/features/v1.0.0">
+
+    <!-- all features in one -->
+    <feature name="gbstore" version="${project.version}">
+        <feature version="${project.version}">gbstore-canonical-model</feature>
+        <feature version="${project.version}">gbstore-soap-adapter</feature>
+        <feature version="${project.version}">gbstore-order-manager</feature>
+        <feature version="${project.version}">gbstore-splitter</feature>
+        <feature version="${project.version}">gbstore-cbr</feature>
+        <feature version="${project.version}">gbstore-mysql-ds</feature>
+        <feature version="${project.version}">gbstore-db-translator</feature>
+        <feature version="${project.version}">gbstore-suppliera-translator</feature>
+        <feature version="${project.version}">gbstore-supplierb-translator</feature>
+        <feature version="${project.version}">gbstore-supplierc-translator</feature>
+    </feature>
+    <feature name="gbstore-canonical-model" version="${project.version}">
+        <bundle start="false">mvn:${groupId}/gbstore-canonical-model/${project.version}</bundle>
+    </feature>
+     <feature name="gbstore-soap-adapter" version="${project.version}">
+     	<configfile finalname="/etc/${groupId}.soapadapter.cfg" override="true">
+           mvn:${groupId}/gbstore-soap-adapter/${project.version}/cfg/${build.env}
+       </configfile>
+        <bundle start="false">mvn:${groupId}/gbstore-soap-adapter/${project.version}</bundle>
+    </feature>
+    <feature name="gbstore-order-manager" version="${project.version}">
+     	<configfile finalname="/etc/${groupId}.ordermanager.cfg" override="true">
+           mvn:${groupId}/gbstore-order-manager/${project.version}/cfg/${build.env}
+       </configfile>
+        <bundle start="false">mvn:${groupId}/gbstore-order-manager/${project.version}</bundle>
+    </feature>
+    <feature name="gbstore-splitter" version="${project.version}">
+     	<configfile finalname="/etc/${groupId}.splitter.cfg" override="true">
+           mvn:${groupId}/gbstore-splitter/${project.version}/cfg/${build.env}
+       </configfile>
+        <bundle start="false">mvn:${groupId}/gbstore-splitter/${project.version}</bundle>
+    </feature>
+    <feature name="gbstore-cbr" version="${project.version}">
+     	<configfile finalname="/etc/${groupId}.cbr.cfg" override="true">
+           mvn:${groupId}/gbstore-cbr/${project.version}/cfg/${build.env}
+       </configfile>
+        <bundle start="false">mvn:${groupId}/gbstore-cbr/${project.version}</bundle>
+    </feature>
+    <feature name="gbstore-suppliera-translator" version="${project.version}">
+    	<feature version="${camel.redhat.version}">camel-xmljson</feature>
+    	<feature version="${camel.redhat.version}">camel-restlet</feature>
+    	<feature version="${project.version}">gbstore-canonical-model</feature>
+     	<configfile finalname="/etc/${groupId}.suppliera.translator.cfg" override="true">
+           mvn:${groupId}/gbstore-suppliera-translator/${project.version}/cfg/${build.env}
+       </configfile>
+       <bundle start="true">mvn:xom/xom/${xom.version}</bundle>
+        <bundle start="false">mvn:${groupId}/gbstore-suppliera-translator/${project.version}</bundle>
+    </feature>
+     <feature name="gbstore-supplierb-translator" version="${project.version}">
+     <feature version="${project.version}">gbstore-canonical-model</feature>
+     	<configfile finalname="/etc/${groupId}.supplierb.translator.cfg" override="true">
+           mvn:${groupId}/gbstore-supplierb-translator/${project.version}/cfg/${build.env}
+       </configfile>
+        <bundle start="false">mvn:${groupId}/gbstore-supplierb-translator/${project.version}</bundle>
+    </feature>
+    <feature name="gbstore-supplierc-translator" version="${project.version}">
+    <feature version="${project.version}">gbstore-canonical-model</feature>
+     	<configfile finalname="/etc/${groupId}.supplierc.translator.cfg" override="true">
+           mvn:${groupId}/gbstore-supplierc-translator/${project.version}/cfg/${build.env}
+       </configfile>
+        <bundle start="false">mvn:${groupId}/gbstore-supplierc-translator/${project.version}</bundle>
+    </feature>
+    <feature name="gbstore-mysql-ds" version="${project.version}">
+     	<bundle>wrap:mvn:mysql/mysql-connector-java/${mysql.connector.version}</bundle>
+     	<configfile finalname="/etc/${groupId}.mysqlds.cfg" override="true">
+           mvn:${groupId}/gbstore-mysql-ds/${project.version}/cfg/${build.env}
+       </configfile>
+        <bundle start="false">mvn:${groupId}/gbstore-mysql-ds/${project.version}</bundle>
+    </feature>
+    
+   <feature name="gbstore-db-translator" version="${project.version}">
+   		<feature>jpa</feature>
+        <feature>jndi</feature>
+        <feature>transaction</feature>
+   		<bundle>wrap:mvn:mysql/mysql-connector-java/${mysql.connector.version}</bundle>
+     	<bundle>mvn:org.apache.geronimo.specs/geronimo-jpa_2.0_spec/1.1</bundle>
+     	<bundle>mvn:org.apache.openjpa/openjpa/${openjpa.version}</bundle>
+     	<bundle>mvn:commons-dbcp/commons-dbcp/1.4</bundle>
+     	<bundle>wrap:mvn:net.sourceforge.serp/serp/1.13.1</bundle>
+     	<bundle>mvn:org.apache.xbean/xbean-asm4-shaded/3.16</bundle>
+      	<bundle>mvn:org.apache.xbean/xbean-asm5-shaded/3.17</bundle>
+     	<bundle>mvn:${groupId}/gbstore-mysql-ds/${project.version}</bundle>
+     	<configfile finalname="/etc/${groupId}.dbtranslator.cfg" override="true">
+           mvn:${groupId}/gbstore-db-translator/${project.version}/cfg/${build.env}
+       </configfile>
+        <bundle start="false">mvn:${groupId}/gbstore-db-translator/${project.version}</bundle>
+    </feature>
+</features>

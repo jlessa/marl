@@ -1,0 +1,44 @@
+<dbe:saveStoreOrderRequest xmlns:dbe="http://gbstore.com.au/messages/dbtranslator/saveStoreOrderRequest/v1.0" xmlns:tp="http://gbstore.com.au/types/dbtranslator/v1.0">
+<dbe:entry>
+<tp:insertDate/>
+<tp:storeOrderList>
+       	<tp:storeOrder>
+            	<tp:storeOrderId>1234</tp:storeOrderId>
+                <tp:itemStoreOrderList>
+                <tp:itemStoreOrder>
+                	<tp:product>
+                    	<tp:internalId>1</tp:internalId>
+						<tp:name>bud</tp:name>                    
+                    </tp:product>
+                    <tp:quantity>100</tp:quantity>
+                </tp:itemStoreOrder><tp:itemStoreOrder>
+                	<tp:product>
+                    	<tp:internalId>2</tp:internalId>
+						<tp:name>amstel</tp:name>                    
+                    </tp:product>
+                    <tp:quantity>200</tp:quantity>
+                </tp:itemStoreOrder>
+                </tp:itemStoreOrderList>
+
+            </tp:storeOrder><tp:storeOrder>
+            	<tp:storeOrderId>4321</tp:storeOrderId>
+                <tp:itemStoreOrderList>
+                <tp:itemStoreOrder>
+                	<tp:product>
+                    	<tp:internalId>1</tp:internalId>
+						<tp:name>bud</tp:name>                    
+                    </tp:product>
+                    <tp:quantity>100</tp:quantity>
+                </tp:itemStoreOrder><tp:itemStoreOrder>
+                	<tp:product>
+                    	<tp:internalId>2</tp:internalId>
+						<tp:name>amstel</tp:name>                    
+                    </tp:product>
+                    <tp:quantity>200</tp:quantity>
+                </tp:itemStoreOrder>
+                </tp:itemStoreOrderList>
+
+            </tp:storeOrder>
+   		</tp:storeOrderList>
+   </dbe:entry>
+</dbe:saveStoreOrderRequest>

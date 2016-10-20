@@ -1,0 +1,14 @@
+<web-app>
+	<display-name>Supplier C</display-name>
+	 <!-- location of spring xml files -->
+  <context-param>
+    <param-name>contextConfigLocation</param-name>
+    <param-value>classpath:META-INF/spring/application-context.xml</param-value>
+  </context-param>
+
+  <!-- the listener that kick-starts Spring -->
+  <listener>
+    <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+  </listener>
+
+</web-app>

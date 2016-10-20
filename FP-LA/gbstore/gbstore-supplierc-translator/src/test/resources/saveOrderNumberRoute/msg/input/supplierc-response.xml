@@ -1,0 +1,7 @@
+<ns3:supplierCTranslatorMessage xmlns="http://supplierc.com.au/types/v1.0"
+	xmlns:ns3="http://supplierc.com.au/messages/orderresponse/v1.0">
+	<ns3:supplierOrderResponse>
+		<supplierOrderId>10</supplierOrderId>
+		<orderNumber>16</orderNumber>
+	</ns3:supplierOrderResponse>
+</ns3:supplierCTranslatorMessage>

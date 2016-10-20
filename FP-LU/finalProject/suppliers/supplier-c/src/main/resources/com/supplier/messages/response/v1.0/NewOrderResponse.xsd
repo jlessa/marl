@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+		targetNamespace="http://supplier.com/supplierc/messages/response/v1.0" 
+		xmlns:tns="http://supplier.com/supplierc/messages/response/v1.0"  
+		elementFormDefault="qualified">
+		
+		<xsd:element name="response">
+			<xsd:complexType>
+				<xsd:sequence>
+					<xsd:element name="orderNumber" type="xsd:int"/>
+				</xsd:sequence>
+			</xsd:complexType>
+		</xsd:element>
+		
+</xsd:schema>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jboss-deployment-structure xmlns="urn:jboss:deployment-structure:1.2">
+	<deployment>
+		<exclusions>
+			<module name="org.hibernate" slot="main" />
+			<module name="org.apache.cxf" />
+			<module name="org.apache.cxf.impl" />
+			<module name="org.springframework.spring" />
+		</exclusions>
+		<exclude-subsystems>
+			<subsystem name="webservices" />
+		</exclude-subsystems>
+		<dependencies>
+                 <module name="javax.api" />
+                <module name="javax.mail.api" />
+                <module name="javax.servlet.api" />
+                <module name="javax.servlet.jsp.api" />
+                <module name="javax.transaction.api" />
+        </dependencies>
+	</deployment>
+</jboss-deployment-structure>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="http://java.sun.com/xml/ns/persistence"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd"
+	version="1.0">
+
+	<persistence-unit name="liquorStore-PU"
+		transaction-type="RESOURCE_LOCAL">
+		<provider>org.apache.openjpa.persistence.PersistenceProviderImpl</provider>
+
+		<non-jta-data-source>osgi:service/javax.sql.DataSource/(osgi.jndi.service.name=jdbc/NoTxTradeDataSource)</non-jta-data-source>
+
+		<class>com.goodbooze.dbtranslator.databasemodel.model.EntryJPA</class>
+		<class>com.goodbooze.dbtranslator.databasemodel.model.ItemStoreOrderJPA</class>
+		<class>com.goodbooze.dbtranslator.databasemodel.model.ItemSupplierOrderJPA</class>
+		<class>com.goodbooze.dbtranslator.databasemodel.model.ProductJPA</class>
+		<class>com.goodbooze.dbtranslator.databasemodel.model.StoreJPA</class>
+		<class>com.goodbooze.dbtranslator.databasemodel.model.StoreOrderJPA</class>
+		<class>com.goodbooze.dbtranslator.databasemodel.model.SupplierJPA</class>
+		<class>com.goodbooze.dbtranslator.databasemodel.model.SupplierOrderJPA</class>
+		
+	</persistence-unit>
+
+
+</persistence>

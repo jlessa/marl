@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema 
+        xmlns:xs="http://www.w3.org/2001/XMLSchema"         
+        xmlns:tp="http://gbstore.com.au/types/dbtranslator/v1.0"
+        xmlns:dbssor="http://gbstore.com.au/messages/dbtranslator/saveSupplierOrdersRequest/v1.0"
+		targetNamespace="http://gbstore.com.au/messages/dbtranslator/saveSupplierOrdersRequest/v1.0" 
+		elementFormDefault="qualified">
+		
+	<xs:import namespace="http://gbstore.com.au/types/dbtranslator/v1.0" schemaLocation="../../../../types/dbtranslator/v1.0/DBTypes.xsd"/>
+	
+	<xs:element name="saveSupplierOrderRequest">
+	
+	<xs:complexType>
+		<xs:sequence>
+			<xs:element name="supplierOrder" type="tp:SupplierOrderType" minOccurs="1" maxOccurs="3"/>
+		</xs:sequence>
+	</xs:complexType>
+	</xs:element>
+</xs:schema>

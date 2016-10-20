@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema 
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:tns="http://gbstore.com.au/types/legacysystem/v1.0"
+	targetNamespace="http://gbstore.com.au/types/legacysystem/v1.0"
+	elementFormDefault="qualified">
+	
+	<xs:complexType name="EntryType">
+		<xs:sequence>
+			<xs:element name="insertDate" type="xs:dateTime"/>
+			<xs:element name="processDate" type="xs:dateTime"/>
+			<xs:element name="storeOrderList" type="tns:StoreOrderListType"/>			
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="StoreOrderListType"> 
+		<xs:sequence>
+			<xs:element name="storeOrder" type="tns:StoreOrderType" minOccurs="1" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="StoreOrderType">
+		<xs:sequence>
+			<xs:element name="store" type="tns:StoreType"/>
+			<xs:element name="itemStoreOrderList" type="tns:ItemStoreOrderListType"/>
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="StoreType">
+		<xs:sequence>
+			<xs:element name="storeId" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="name" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="ItemStoreOrderListType">
+		<xs:sequence>
+			<xs:element name="itemStoreOrder" type="tns:ItemStoreOrderType"  minOccurs="1" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="ItemStoreOrderType">
+		<xs:sequence>
+			<xs:element name="product" type="tns:ProductStoreType" />
+			<xs:element name="quantity" type="xs:integer" />
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="ProductStoreType">
+		<xs:sequence>
+			<xs:element name="internalId" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="name" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+	
+</xs:schema>

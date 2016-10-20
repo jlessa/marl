@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:camel="http://camel.apache.org/schema/spring"
+       xsi:schemaLocation="
+         http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+         http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd">
+
+  <!-- use camel-metrics route policy to gather metrics for all routes -->
+  <bean id="metricsRoutePolicyFactory" class="org.apache.camel.component.metrics.routepolicy.MetricsRoutePolicyFactory"/>
+  
+  <!-- a bean for create order services -->
+  <bean id="newOrderService" class="com.supplier.suppliera.service.NewOrderService"/>
+
+  <camelContext id="myCamel" xmlns="http://camel.apache.org/schema/spring">
+        
+    <restConfiguration component="servlet" bindingMode="json" contextPath="/supplier-a/rest" port="8080">
+      <dataFormatProperty key="prettyPrint" value="true"/>
+    </restConfiguration>
+
+    <!-- Handles requests to a base URL of /supplier-a/rest/createorder -->
+    <rest path="/createorder" consumes="application/json" produces="application/json">
+      <description>create new order service</description>
+
+      <!-- this is a rest POST to create a new order -->
+      <post uri="/neworder" 
+      		type="com.supplier.suppliera.bean.NewOrderRequest" 
+      		outType="com.supplier.suppliera.bean.NewOrderResponse">
+       
+        <description>new order</description>
+        <to uri="bean:newOrderService?method=createOrder"/>
+      </post>
+    </rest>
+  </camelContext>
+
+</beans>

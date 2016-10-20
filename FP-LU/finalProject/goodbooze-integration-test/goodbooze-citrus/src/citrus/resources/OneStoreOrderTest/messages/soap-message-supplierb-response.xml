@@ -1,0 +1,3 @@
+<tns:NewOrderResponse xmlns:tns="http://supplier.com/messages/response/v1.0/">
+	<tns:orderNumber>10001</tns:orderNumber>
+</tns:NewOrderResponse>

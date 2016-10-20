@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema 
+        xmlns:xs="http://www.w3.org/2001/XMLSchema"         
+        xmlns:sot="http://gbstore.com.au/types/legacysystem/v1.0"
+        xmlns:sor="http://gbstore.com.au/messages/legacysystem/storeOrderRequest/v1.0"
+		targetNamespace="http://gbstore.com.au/messages/legacysystem/storeOrderRequest/v1.0" 
+		elementFormDefault="qualified">
+		
+		<xs:import namespace="http://gbstore.com.au/types/legacysystem/v1.0" schemaLocation="../../../../types/legacysystem/v1.0/LegacySystemTypes.xsd"/>
+
+		<xs:element name="storeOrderRequest">
+			<xs:complexType>
+				<xs:sequence>
+					<xs:element name="entry" type="sot:EntryType" minOccurs="1"/>
+				</xs:sequence>
+			</xs:complexType>
+		</xs:element>
+		
+</xs:schema>

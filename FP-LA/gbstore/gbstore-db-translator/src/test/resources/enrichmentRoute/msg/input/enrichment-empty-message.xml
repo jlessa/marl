@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dbe:EnrichmentRequest
+	xmlns:dbe="http://gbstore.com.au/messages/dbtranslator/enrichmentRequest/v1.0">
+	<dbe:storeOrderList>
+	</dbe:storeOrderList>
+</dbe:EnrichmentRequest>
