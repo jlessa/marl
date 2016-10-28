@@ -1,0 +1,28 @@
+
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:tp="http://goodbooze.com/types"
+    targetNamespace="http://goodbooze.com/messages/dbtranslator"
+    elementFormDefault="qualified">
+
+    <xs:import namespace="http://goodbooze.com/types" schemaLocation="../../types/db-entities.xsd"/>
+
+    <xs:element name="saveSupplierOrderRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="saveSupplierOrderRequest" type="saveSupplierOrderRequest"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="saveSupplierOrderRequest">
+        <xs:sequence>
+            <xs:element name="insertDate" type="xs:dateTime"/>
+            <xs:element name="processDate" type="xs:dateTime"/>
+            <xs:element name="supplier" type="to:supplier"/>
+            <xs:element name="itemSupplierOrderList" type="tp:itemSupplierOrderList"/>
+        </xs:sequence>
+    </xs:complexType>
+
+</xs:schema>

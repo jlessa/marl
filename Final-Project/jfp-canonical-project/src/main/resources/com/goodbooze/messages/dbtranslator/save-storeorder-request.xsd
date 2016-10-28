@@ -1,0 +1,27 @@
+
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:tp="http://goodbooze.com/types"
+    targetNamespace="http://goodbooze.com/messages/dbtranslator"
+    elementFormDefault="qualified">
+
+    <xs:import namespace="http://goodbooze.com/types" schemaLocation="../../types/db-entities.xsd"/>
+
+    <xs:element name="saveStoreOrderRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="saveStoreOrderRequest" type="storeOrderRequest"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="storeOrderRequest">
+        <xs:sequence>
+            <xs:element name="insertDate" type="xs:dateTime"/>
+            <xs:element name="processDate" type="xs:dateTime"/>
+            <xs:element name="supplierOrderList" type="tp:supplierOrder" minOccurs="1" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+</xs:schema>
